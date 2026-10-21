@@ -1,0 +1,1361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CareLinx Base Referral Form — Proposed Structure</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/proposal.css">
+</head>
+<body>
+<div class="page-shell">
+
+  <aside class="voice-rail">
+  <div class="voice-collapsible">
+    <input type="checkbox" class="visually-hidden voice-open-toggle" id="voiceOpen">
+    <label for="voiceOpen" class="voice-collapsible-summary">
+      <span class="badge badge-voice">AI voice fill</span>
+      <span class="voice-collapsible-chev" aria-hidden="true"></span>
+    </label>
+    <div class="voice-card-inner">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="vIdle" checked>
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v1">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v2">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v3">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v4">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v5">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v6">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v7">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v8">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v9">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v10">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v11">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v12">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v13">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v14">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v15">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="v16">
+      <input type="radio" name="voiceFlow" class="visually-hidden" id="vEnded">
+
+      <div class="voice-idle">
+        <div class="voice-idle-head">
+          <div class="voice-icon-circle">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.3 2.3h2l1 2.7-1.4 1.4a7.6 7.6 0 0 0 4.3 4.3l1.4-1.4 2.7 1v2c0 .6-.5 1-1 1A10.3 10.3 0 0 1 2.3 3.3c0-.5.4-1 1-1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          </div>
+          <div class="voice-text">
+            <p class="voice-sub">The patient talks through the referral — CareLinx AI listens on the call and fills in the fields as the conversation goes.</p>
+          </div>
+        </div>
+        <label for="v1" class="voice-call-btn">
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.3 2.3h2l1 2.7-1.4 1.4a7.6 7.6 0 0 0 4.3 4.3l1.4-1.4 2.7 1v2c0 .6-.5 1-1 1A10.3 10.3 0 0 1 2.3 3.3c0-.5.4-1 1-1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          Call to fill form
+        </label>
+      </div>
+
+      <div class="voice-active">
+        <div class="voice-active-head">
+          <div class="voice-wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="voice-text">
+            <p class="voice-title">Listening…</p>
+            <p class="voice-sub">CareLinx AI is filling in the form as the patient talks.</p>
+          </div>
+        </div>
+        <label for="vEnded" class="voice-hangup-btn">Hang up</label>
+
+        <div class="voice-transcript" role="log" aria-label="Call transcript">
+          <div class="turn turn-name">
+            <p><span class="voice-patient">Patient —</span> "Hi, this is Dorothy Phillips calling about setting up home care for myself."</p>
+          </div>
+          <div class="turn turn-dob">
+            <p><span class="voice-advisor">Care Advisor —</span> "Hi Dorothy, thanks for calling CareLinx — happy to help. Can you confirm your date of birth for me?"</p>
+            <p><span class="voice-patient">Patient —</span> "March 14th, 1948."</p>
+          </div>
+          <div class="turn turn-genderCareFor">
+            <p><span class="voice-advisor">Care Advisor —</span> "Thank you. And I'll note your gender as female for our records, and that this referral is for you yourself — is that right?"</p>
+            <p><span class="voice-patient">Patient —</span> "Yes, that's all correct."</p>
+          </div>
+          <div class="turn turn-phone">
+            <p><span class="voice-advisor">Care Advisor —</span> "Great. What's the best phone number to reach you at?"</p>
+            <p><span class="voice-patient">Patient —</span> "You can reach me at 503-555-0148."</p>
+            <p><span class="voice-advisor">Care Advisor —</span> "Got it. And an email address, in case we need to send anything over?"</p>
+            <p><span class="voice-patient">Patient —</span> "Oh, I don't really check email — let's just stick to the phone if that's alright."</p>
+            <p><span class="voice-advisor">Care Advisor —</span> "That's completely fine, we'll note phone as your preferred contact."</p>
+          </div>
+          <div class="turn turn-address">
+            <p><span class="voice-advisor">Care Advisor —</span> "And what's the address where care will take place?"</p>
+            <p><span class="voice-patient">Patient —</span> "42 Birchwood Lane, Beaverton, Oregon."</p>
+            <p><span class="voice-advisor">Care Advisor —</span> "Thank you. Do you happen to have your Member ID or VA ICN number handy?"</p>
+            <p><span class="voice-patient">Patient —</span> "I don't have that in front of me right now — I'd have to dig through some paperwork."</p>
+            <p><span class="voice-advisor">Care Advisor —</span> "No problem at all, we can follow up on that separately."</p>
+          </div>
+          <div class="turn turn-adl">
+            <p><span class="voice-advisor">Care Advisor —</span> "Let's talk about what kind of help you're looking for. Do you need assistance with bathing or getting around?"</p>
+            <p><span class="voice-patient">Patient —</span> "Yes — bathing's difficult some days, and I use a walker, so help getting around the house would be great too."</p>
+            <p><span class="voice-advisor">Care Advisor —</span> "Understood, I'll note bathing assistance and mobility support."</p>
+          </div>
+          <div class="turn turn-caregiverGender">
+            <p><span class="voice-advisor">Care Advisor —</span> "Do you have a preference on the caregiver's gender?"</p>
+            <p><span class="voice-patient">Patient —</span> "No preference — whoever's available is fine."</p>
+          </div>
+          <div class="turn turn-insurance">
+            <p><span class="voice-advisor">Care Advisor —</span> "Good to know. What insurance will be covering this care?"</p>
+            <p><span class="voice-patient">Patient —</span> "I have Medicare."</p>
+          </div>
+          <div class="turn turn-overnight">
+            <p><span class="voice-advisor">Care Advisor —</span> "Got it. And would you need any overnight care, or just daytime visits?"</p>
+            <p><span class="voice-patient">Patient —</span> "Just daytime — no overnight needed."</p>
+          </div>
+          <div class="turn turn-schedule">
+            <p><span class="voice-advisor">Care Advisor —</span> "Perfect. What days and times usually work best for a visit?"</p>
+            <p><span class="voice-patient">Patient —</span> "Weekday mornings are best — Monday through Friday, around 9 to noon."</p>
+          </div>
+          <div class="turn turn-byoc">
+            <p><span class="voice-advisor">Care Advisor —</span> "One last thing on that front — will you be bringing your own caregiver, or would you like us to help match you with one?"</p>
+            <p><span class="voice-patient">Patient —</span> "No, I don't have anyone in mind — I'd like your help finding someone."</p>
+          </div>
+          <div class="turn turn-contactIntro">
+            <p><span class="voice-advisor">Care Advisor —</span> "Last thing — let's add an emergency contact. Who should we list, and how are they related to you?"</p>
+            <p><span class="voice-patient">Patient —</span> "My daughter, Linda Phillips — she's my emergency contact."</p>
+          </div>
+          <div class="turn turn-contactPhone">
+            <p><span class="voice-advisor">Care Advisor —</span> "And a phone number for Linda?"</p>
+            <p><span class="voice-patient">Patient —</span> "503-555-0199."</p>
+            <p><span class="voice-advisor">Care Advisor —</span> "Do you have an email for her as well?"</p>
+            <p><span class="voice-patient">Patient —</span> "I don't have it memorized — I'd have to check with her."</p>
+            <p><span class="voice-advisor">Care Advisor —</span> "No problem, we'll flag that for follow-up. That's everything I need for now — thank you so much for calling, Dorothy!"</p>
+          </div>
+        </div>
+
+        <div class="voice-step-nav">
+          <label for="v1" class="voice-step-btn voice-step-back voice-step-back-1" aria-hidden="true" style="visibility:hidden">Back</label>
+          <label for="v1" class="voice-step-btn voice-step-back voice-step-back-2">Back</label>
+          <label for="v2" class="voice-step-btn voice-step-back voice-step-back-3">Back</label>
+          <label for="v3" class="voice-step-btn voice-step-back voice-step-back-4">Back</label>
+          <label for="v4" class="voice-step-btn voice-step-back voice-step-back-5">Back</label>
+          <label for="v5" class="voice-step-btn voice-step-back voice-step-back-6">Back</label>
+          <label for="v6" class="voice-step-btn voice-step-back voice-step-back-7">Back</label>
+          <label for="v7" class="voice-step-btn voice-step-back voice-step-back-8">Back</label>
+          <label for="v8" class="voice-step-btn voice-step-back voice-step-back-9">Back</label>
+          <label for="v9" class="voice-step-btn voice-step-back voice-step-back-10">Back</label>
+          <label for="v10" class="voice-step-btn voice-step-back voice-step-back-11">Back</label>
+          <label for="v11" class="voice-step-btn voice-step-back voice-step-back-12">Back</label>
+          <label for="v12" class="voice-step-btn voice-step-back voice-step-back-13">Back</label>
+          <label for="v13" class="voice-step-btn voice-step-back voice-step-back-14">Back</label>
+          <label for="v14" class="voice-step-btn voice-step-back voice-step-back-15">Back</label>
+          <label for="v15" class="voice-step-btn voice-step-back voice-step-back-16">Back</label>
+
+          <span class="voice-step-label voice-step-label-1">Step 1 of 16</span>
+          <span class="voice-step-label voice-step-label-2">Step 2 of 16</span>
+          <span class="voice-step-label voice-step-label-3">Step 3 of 16</span>
+          <span class="voice-step-label voice-step-label-4">Step 4 of 16</span>
+          <span class="voice-step-label voice-step-label-5">Step 5 of 16</span>
+          <span class="voice-step-label voice-step-label-6">Step 6 of 16</span>
+          <span class="voice-step-label voice-step-label-7">Step 7 of 16</span>
+          <span class="voice-step-label voice-step-label-8">Step 8 of 16</span>
+          <span class="voice-step-label voice-step-label-9">Step 9 of 16</span>
+          <span class="voice-step-label voice-step-label-10">Step 10 of 16</span>
+          <span class="voice-step-label voice-step-label-11">Step 11 of 16</span>
+          <span class="voice-step-label voice-step-label-12">Step 12 of 16</span>
+          <span class="voice-step-label voice-step-label-13">Step 13 of 16</span>
+          <span class="voice-step-label voice-step-label-14">Step 14 of 16</span>
+          <span class="voice-step-label voice-step-label-15">Step 15 of 16</span>
+          <span class="voice-step-label voice-step-label-16">Step 16 of 16</span>
+
+          <label for="v2" class="voice-step-btn voice-step-next voice-step-next-1">Next</label>
+          <label for="v3" class="voice-step-btn voice-step-next voice-step-next-2">Next</label>
+          <label for="v4" class="voice-step-btn voice-step-next voice-step-next-3">Next</label>
+          <label for="v5" class="voice-step-btn voice-step-next voice-step-next-4">Next</label>
+          <label for="v6" class="voice-step-btn voice-step-next voice-step-next-5">Next</label>
+          <label for="v7" class="voice-step-btn voice-step-next voice-step-next-6">Next</label>
+          <label for="v8" class="voice-step-btn voice-step-next voice-step-next-7">Next</label>
+          <label for="v9" class="voice-step-btn voice-step-next voice-step-next-8">Next</label>
+          <label for="v10" class="voice-step-btn voice-step-next voice-step-next-9">Next</label>
+          <label for="v11" class="voice-step-btn voice-step-next voice-step-next-10">Next</label>
+          <label for="v12" class="voice-step-btn voice-step-next voice-step-next-11">Next</label>
+          <label for="v13" class="voice-step-btn voice-step-next voice-step-next-12">Next</label>
+          <label for="v14" class="voice-step-btn voice-step-next voice-step-next-13">Next</label>
+          <label for="v15" class="voice-step-btn voice-step-next voice-step-next-14">Next</label>
+          <label for="v16" class="voice-step-btn voice-step-next voice-step-next-15">Next</label>
+          <label for="vEnded" class="voice-step-btn voice-step-next voice-step-next-16">Finish call</label>
+        </div>
+
+        <div class="voice-filled-list" role="status" aria-live="polite">
+          <p class="voice-filled-label">Filled so far</p>
+          <div class="voice-filled-chips">
+            <span class="voice-filled-chip vf-1">✓ First / Last Name</span>
+            <span class="voice-filled-chip vf-2">✓ Date of Birth</span>
+            <span class="voice-filled-chip vf-3">✓ Gender</span>
+            <span class="voice-filled-chip vf-4">✓ Who Care Is For</span>
+            <span class="voice-filled-chip vf-5">✓ Phone Number</span>
+            <span class="voice-filled-chip vf-6">✓ Care Location Address</span>
+            <span class="voice-filled-chip vf-7">✓ ADL: Bathing</span>
+            <span class="voice-filled-chip vf-8">✓ ADL: Mobility</span>
+            <span class="voice-filled-chip vf-9">✓ Caregiver Gender Pref.</span>
+            <span class="voice-filled-chip vf-10">✓ Insurance</span>
+            <span class="voice-filled-chip vf-11">✓ Overnight Care</span>
+            <span class="voice-filled-chip vf-12">✓ Available Schedule</span>
+            <span class="voice-filled-chip vf-13">✓ Bring Your Own Caregiver</span>
+            <span class="voice-filled-chip vf-14">✓ Contact Relationship</span>
+            <span class="voice-filled-chip vf-15">✓ Care Contact Name</span>
+            <span class="voice-filled-chip vf-16">✓ Care Contact Phone</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="voice-summary">
+        <div class="voice-summary-head">
+          <div class="voice-summary-check">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="voice-text">
+            <p class="voice-title">Patient Intake Successful</p>
+            <p class="voice-sub">Here's a summary of the call. Review the referral form below, or submit another intake.</p>
+          </div>
+        </div>
+        <div class="voice-summary-section-row">
+          <p class="voice-summary-section">Call Summary</p>
+          <span class="voice-ai-tag">✨ AI-generated</span>
+        </div>
+        <div class="voice-call-summary">
+          <p>Dorothy Phillips, 78, called in herself to start the intake for in-home personal care. She's managing a recent decline in mobility and now gets around with a walker — she's looking for help with bathing and with moving around safely, but was clear this isn't full-time care, just a few mornings a week. She came across as sharp, independent, and easy to talk to; she has no strong preference on caregiver gender and just wants someone patient and reliable. She doesn't have a caregiver lined up yet and sounded eager to get matched soon. Her daughter Linda is listed as a backup contact, but Dorothy intends to make her own care decisions and asked that any follow-up go to her directly by phone first, since she doesn't check email regularly.</p>
+        </div>
+
+        <p class="voice-summary-section">Caregiver matching notes <span class="voice-summary-note">(To be shown as part of Jobs)</span></p>
+        <div class="voice-notes-list">
+          <p>No preference on caregiver gender — open to any available caregiver.</p>
+          <p>Uses a walker; caregiver should be comfortable assisting with mobility and aware of fall risk.</p>
+          <p>Strongly prefers weekday mornings (9 AM–12 PM) — give advance notice of any schedule changes.</p>
+          <p>Does not have her own caregiver lined up — looking for CareLinx to match her with one.</p>
+        </div>
+
+        <p class="voice-summary-section">Next steps</p>
+        <div class="voice-nextsteps-list">
+          <div class="voice-nextstep-item">
+            <p>Follow up by phone for her Member ID / VA ICN — she needs to locate the paperwork.</p>
+          </div>
+          <div class="voice-nextstep-item">
+            <p>Get care contact (Linda) email directly from Dorothy's daughter.</p>
+          </div>
+          <div class="voice-nextstep-item">
+            <p>Follow up in 3 days to share caregiver search status.</p>
+          </div>
+        </div>
+
+        <label for="voiceOpen" class="voice-call-btn">Go back to referral form</label>
+        <label for="vIdle" class="voice-newcall-btn">Submit another form</label>
+      </div>
+    </div>
+  </div>
+  </aside>
+
+  <div class="wrap">
+
+  <div class="card" id="cardProgramSelect">
+    <span class="card-tag"><span class="badge badge-core">Core</span></span>
+    <h1 class="form-title">Program</h1>
+    <p class="section-sub">Choose the program this referral is for — the required next step and the form below unlock based on your choice.</p>
+
+    <div class="program-select-row">
+      <input type="radio" name="program" class="visually-hidden program-toggle" id="progPayer">
+      <label for="progPayer" class="program-pill">
+        <span class="program-pill-name">Payer</span>
+        <span class="program-pill-note">Eligibility check required</span>
+      </label>
+      <input type="radio" name="program" class="visually-hidden program-toggle" id="progVA">
+      <label for="progVA" class="program-pill">
+        <span class="program-pill-name">VA</span>
+        <span class="program-pill-note">Document upload required</span>
+      </label>
+      <input type="radio" name="program" class="visually-hidden program-toggle" id="progDischarge">
+      <label for="progDischarge" class="program-pill">
+        <span class="program-pill-name">Discharged Support</span>
+        <span class="program-pill-note">No extra step — form unlocks now</span>
+      </label>
+      <input type="radio" name="program" class="visually-hidden program-toggle" id="progGuide">
+      <label for="progGuide" class="program-pill">
+        <span class="program-pill-name">GUIDE</span>
+        <span class="program-pill-note">No extra step — form unlocks now</span>
+      </label>
+    </div>
+
+    <div class="form-clear-row">
+      <input type="checkbox" class="visually-hidden" id="formCleared">
+      <label for="formCleared" class="form-clear-btn">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 3.5l-9 9m0-9l9 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        Clear form
+      </label>
+    </div>
+  </div>
+
+  <div class="card" id="cardEligibility">
+    <span class="card-tag"><span class="badge badge-core">Core</span></span>
+    <h1 class="form-title">Eligibility Check</h1>
+    <p class="section-sub">Confirm the member is eligible for the program before starting the referral.</p>
+
+    <div class="elig-demo-row">
+      <span class="elig-demo-label">Demo result</span>
+      <input type="radio" name="eligDemo" class="visually-hidden voice-cg-toggle" id="eligDemoFound" checked>
+      <label for="eligDemoFound" class="voice-cg-toggle-pill">Eligible</label>
+      <input type="radio" name="eligDemo" class="visually-hidden voice-cg-toggle" id="eligDemoNotFound">
+      <label for="eligDemoNotFound" class="voice-cg-toggle-pill">Not found</label>
+    </div>
+
+    <div class="field-row-3">
+      <div>
+        <div class="field-label-row"><label class="field-label" for="eligMemberId">Member ID</label></div>
+        <input class="field-input" id="eligMemberId" type="text" placeholder="Health plan member ID">
+      </div>
+      <div>
+        <div class="field-label-row"><label class="field-label" for="eligPatientName">Patient Name</label></div>
+        <input class="field-input" id="eligPatientName" type="text" placeholder="Full name">
+      </div>
+      <div>
+        <div class="field-label-row"><label class="field-label" for="eligProgram">Program</label></div>
+        <select class="field-input" id="eligProgram" aria-label="Program">
+          <option value="" selected>Select a program</option>
+          <option>Medicare Advantage</option>
+          <option>VA Community Care</option>
+          <option>Medicaid Waiver</option>
+          <option>Commercial / Private Pay</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="elig-actions-row">
+      <input type="checkbox" class="visually-hidden" id="eligCheckToggle">
+      <label for="eligCheckToggle" class="elig-check-btn">Check Eligibility</label>
+    </div>
+
+    <div class="elig-result elig-result-found">
+      <div class="elig-result-icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div>
+        <p class="elig-result-title">Eligible — match found on file</p>
+        <p class="elig-result-sub">Dorothy Phillips is active on Medicare Advantage. The referral form below has been pre-filled from the eligibility file — review the details and continue.</p>
+      </div>
+    </div>
+    <div class="elig-result elig-result-notfound">
+      <div class="elig-result-icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8m0-8l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div>
+        <p class="elig-result-title">Member not eligible for this program</p>
+        <p class="elig-result-sub">No match was found on the eligibility file for this member ID / name and program. Double-check the details, or continue filling out the referral manually below.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="cardDocUpload">
+    <span class="card-tag"><span class="badge badge-core">Core</span></span>
+    <h1 class="form-title">Document Upload</h1>
+    <p class="section-sub">Upload a referral PDF and CareLinx AI will read it and auto-fill the form below.</p>
+
+    <div class="docupload-row">
+      <input type="file" id="ocrUpload" name="ocr_upload" accept="application/pdf" class="visually-hidden" required>
+      <label for="ocrUpload" class="docupload-btn">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 10V2.7m0 0L5.3 5.3M8 2.7l2.7 2.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.7 10.7v1.3a1.3 1.3 0 0 0 1.3 1.3h8a1.3 1.3 0 0 0 1.3-1.3v-1.3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Upload referral PDF to auto-fill (OCR)
+      </label>
+      <div class="docupload-done">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Referral PDF uploaded — form auto-filled below</span>
+      </div>
+      <input type="checkbox" class="visually-hidden" id="ocrRemoved">
+      <label for="ocrRemoved" class="docupload-remove-btn">
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8m0-8l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        Remove PDF
+      </label>
+    </div>
+  </div>
+
+  <div class="form-lock-banner form-lock-none">
+    <div class="form-lock-banner-icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="3.5" y="7" width="9" height="6.5" rx="1.3" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" stroke="currentColor" stroke-width="1.3"/></svg></div>
+    <div>
+      <p class="form-lock-banner-title">Select a program to continue</p>
+      <p class="form-lock-banner-sub">Choose Payer, VA, Discharged Support, or GUIDE above — the form below unlocks once the right next step for that program is complete.</p>
+    </div>
+  </div>
+  <div class="form-lock-banner form-lock-payer">
+    <div class="form-lock-banner-icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="3.5" y="7" width="9" height="6.5" rx="1.3" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" stroke="currentColor" stroke-width="1.3"/></svg></div>
+    <div>
+      <p class="form-lock-banner-title">Eligibility check required</p>
+      <p class="form-lock-banner-sub">This is a Payer referral — run the eligibility check above and confirm the member is eligible before filling out the form.</p>
+    </div>
+  </div>
+  <div class="form-lock-banner form-lock-va">
+    <div class="form-lock-banner-icon"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="3.5" y="7" width="9" height="6.5" rx="1.3" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" stroke="currentColor" stroke-width="1.3"/></svg></div>
+    <div>
+      <p class="form-lock-banner-title">Document upload required</p>
+      <p class="form-lock-banner-sub">This is a VA referral — upload the referral PDF above to auto-fill and unlock the form.</p>
+    </div>
+  </div>
+
+  <div id="mainFormSection">
+
+  <div class="card" id="cardPatient">
+    <span class="card-tag"><span class="badge badge-core">Core</span></span>
+    <h1 class="form-title">Patient Personal Details</h1>
+    <p class="section-sub">Who the care is for and how to reach them.</p>
+
+    <div class="field">
+      <div class="field-row-2">
+        <div>
+          <div class="field-label-row"><label class="field-label" for="p-first">First Name</label><span class="ai-fill-badge" id="badgeFirstName">✓ auto-filled</span></div>
+          <div id="fieldFirstName" class="ai-fill-wrap">
+            <input class="field-input" id="p-first" name="first_name" type="text" placeholder="First name of patient" value="Dorothy">
+            <div class="ai-fill-mask" aria-hidden="true">First name of patient</div>
+            <svg class="ai-fill-pencil" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11.3 2.3a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1 0 1.4L5.4 13l-2.7.7.7-2.7 8-8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div>
+          <div class="field-label-row"><label class="field-label" for="p-last">Last Name</label><span class="ai-fill-badge" id="badgeLastName">✓ auto-filled</span></div>
+          <div id="fieldLastName" class="ai-fill-wrap">
+            <input class="field-input" id="p-last" name="last_name" type="text" placeholder="Last name of patient" value="Phillips">
+            <div class="ai-fill-mask" aria-hidden="true">Last name of patient</div>
+            <svg class="ai-fill-pencil" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11.3 2.3a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1 0 1.4L5.4 13l-2.7.7.7-2.7 8-8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-row-2">
+        <div>
+          <div class="field-label-row"><label class="field-label" for="p-dob">Date of Birth</label><span class="ai-fill-badge" id="badgeDob">✓ auto-filled</span></div>
+          <div id="fieldDob" class="ai-fill-wrap">
+            <input class="field-input" id="p-dob" name="dob" type="date" aria-label="Date of Birth" value="1948-03-14">
+            <div class="ai-fill-mask" aria-hidden="true">mm/dd/yyyy</div>
+            <svg class="ai-fill-pencil" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11.3 2.3a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1 0 1.4L5.4 13l-2.7.7.7-2.7 8-8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div>
+          <div class="field-label-row"><label class="field-label" for="p-gender">Gender</label><span class="ai-fill-badge" id="badgeGender">✓ auto-filled</span></div>
+          <div id="fieldGender" class="ai-fill-wrap">
+            <select class="field-input" id="p-gender" name="gender">
+              <option value="">Select gender</option>
+              <option value="female" selected>Female</option>
+              <option value="male">Male</option>
+              <option value="nonbinary">Non-binary</option>
+              <option value="na">Prefer not to say</option>
+            </select>
+            <div class="ai-fill-mask" aria-hidden="true">Select gender</div>
+            <svg class="ai-fill-pencil" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11.3 2.3a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1 0 1.4L5.4 13l-2.7.7.7-2.7 8-8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-row-2">
+        <div>
+          <div class="field-label-row"><label class="field-label" for="p-phone">Phone Number</label><span class="ai-fill-badge" id="badgePhone">✓ auto-filled</span></div>
+          <div id="fieldPhone" class="ai-fill-wrap">
+            <input class="field-input" id="p-phone" name="phone" type="tel" placeholder="Best contact number" value="503-555-0148">
+            <div class="ai-fill-mask" aria-hidden="true">Best contact number</div>
+            <svg class="ai-fill-pencil" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11.3 2.3a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1 0 1.4L5.4 13l-2.7.7.7-2.7 8-8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div>
+          <div class="field-label-row"><label class="field-label" for="p-email">Email Address</label><span class="ai-fill-badge-missing" id="badgeMissingEmail">! ask the member</span></div>
+          <div id="fieldEmail">
+            <input class="field-input" id="p-email" name="email" type="email" placeholder="name@example.com">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-row-2">
+        <div style="flex:2">
+          <div class="field-label-row"><label class="field-label" for="p-address">Care Location Address</label><span class="ai-fill-badge" id="badgeAddress">✓ auto-filled</span></div>
+          <div id="fieldAddress" class="ai-fill-wrap">
+            <input class="field-input" id="p-address" name="care_address" type="text" placeholder="Type and select the care address" value="42 Birchwood Lane, Beaverton, OR">
+            <div class="ai-fill-mask" aria-hidden="true">Type and select the care address</div>
+            <svg class="ai-fill-pencil" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11.3 2.3a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1 0 1.4L5.4 13l-2.7.7.7-2.7 8-8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div style="flex:1">
+          <div class="field-label-row"><label class="field-label" for="p-apt">Apt # (optional)</label></div>
+          <input class="field-input" id="p-apt" name="apt" type="text" placeholder="Unit / apartment number">
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><label class="field-label" for="p-careFor">Care for</label><span class="ai-fill-badge" id="badgeCareFor">✓ auto-filled</span></div>
+      <div id="fieldCareFor" class="ai-fill-wrap">
+        <select class="field-input" id="p-careFor" name="care_for" aria-label="Care for">
+          <option value="">Select one</option>
+          <option value="self" selected>Myself</option>
+          <option value="family">A family member</option>
+          <option value="other">Someone else</option>
+        </select>
+        <div class="ai-fill-mask" aria-hidden="true">Select one</div>
+            <svg class="ai-fill-pencil" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11.3 2.3a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1 0 1.4L5.4 13l-2.7.7.7-2.7 8-8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><label class="field-label" for="memberId">Member ID or VA ICN</label><span class="ai-fill-badge-missing" id="badgeMissingMemberId">! ask the member</span></div>
+      <div id="fieldMemberId">
+        <input class="field-input" id="memberId" name="member_id" type="text" placeholder="Health plan member, MRN, or VA ICN">
+      </div>
+    </div>
+
+    <p class="section-subhead" id="careContactsAnchor">Care Contacts</p>
+
+
+    <div class="contact-entry">
+      <div class="field" style="margin-bottom:0">
+        <div class="field-label-row"><label class="field-label" for="c1-type">Type<span class="required-mark">*</span></label><span class="ai-fill-badge" id="badgeC1Type">✓ auto-filled</span></div>
+        <div id="fieldC1Type" class="ai-fill-wrap">
+          <select class="field-input" id="c1-type" name="contact1_type" required>
+            <option value="">Select an option</option>
+            <option>Coordinator</option>
+            <option>MD</option>
+            <option>Social Worker</option>
+            <option>Registered Nurse</option>
+            <option>Authorized Representative</option>
+            <option selected>Emergency Contact</option>
+            <option>Service Navigator</option>
+            <option>Spouse</option>
+            <option>Family</option>
+            <option>Friend</option>
+          </select>
+          <div class="ai-fill-mask" aria-hidden="true">Select an option</div>
+            <svg class="ai-fill-pencil" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11.3 2.3a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1 0 1.4L5.4 13l-2.7.7.7-2.7 8-8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="field-row-2">
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c1-first">First Name<span class="required-mark">*</span></label><span class="ai-fill-badge" id="badgeC1First">✓ auto-filled</span></div>
+          <div id="fieldC1First" class="ai-fill-wrap">
+            <input class="field-input" id="c1-first" name="contact1_first_name" type="text" placeholder="Enter value" required value="Linda">
+            <div class="ai-fill-mask" aria-hidden="true">Enter value</div>
+            <svg class="ai-fill-pencil" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11.3 2.3a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1 0 1.4L5.4 13l-2.7.7.7-2.7 8-8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c1-last">Last Name<span class="required-mark">*</span></label><span class="ai-fill-badge" id="badgeC1Last">✓ auto-filled</span></div>
+          <div id="fieldC1Last" class="ai-fill-wrap">
+            <input class="field-input" id="c1-last" name="contact1_last_name" type="text" placeholder="Enter value" required value="Phillips">
+            <div class="ai-fill-mask" aria-hidden="true">Enter value</div>
+            <svg class="ai-fill-pencil" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11.3 2.3a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1 0 1.4L5.4 13l-2.7.7.7-2.7 8-8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <div class="field-label-row"><label class="field-label" for="c1-phone">Phone<span class="required-mark">*</span></label><span class="ai-fill-badge" id="badgeC1Phone">✓ auto-filled</span></div>
+        <div id="fieldC1Phone" class="ai-fill-wrap">
+          <input class="field-input" id="c1-phone" name="contact1_phone" type="tel" placeholder="Enter value" required value="503-555-0199">
+          <div class="ai-fill-mask" aria-hidden="true">Enter value</div>
+            <svg class="ai-fill-pencil" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11.3 2.3a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1 0 1.4L5.4 13l-2.7.7.7-2.7 8-8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <div class="field-label-row"><label class="field-label" for="c1-email">Email</label><span class="ai-fill-badge-missing" id="badgeMissingC1Email">! ask the member</span></div>
+        <div id="fieldC1Email">
+          <input class="field-input" id="c1-email" name="contact1_email" type="email" placeholder="Enter value">
+        </div>
+      </div>
+      <div class="field-row-2">
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c1-address">Address</label></div>
+          <input class="field-input" id="c1-address" name="contact1_address" type="text" placeholder="Enter value">
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c1-city">City</label></div>
+          <input class="field-input" id="c1-city" name="contact1_city" type="text" placeholder="Enter value">
+        </div>
+      </div>
+      <div class="field-row-2">
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c1-state">State</label></div>
+          <input class="field-input" id="c1-state" name="contact1_state" type="text" placeholder="Enter value">
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c1-zip">ZIP Code</label></div>
+          <input class="field-input" id="c1-zip" name="contact1_zip" type="text" placeholder="Enter value">
+        </div>
+      </div>
+    </div>
+
+    <input type="checkbox" class="contact-toggle" id="addContact2">
+    <input type="checkbox" class="contact-toggle" id="addContact3">
+
+    <label for="addContact2" class="add-contact-btn add-btn-1">
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      Add another care contact
+    </label>
+
+    <div class="contact-entry contact-entry-2">
+      <div class="contact-entry-head">
+        <p class="contact-entry-title">Care Contact 2</p>
+        <label for="addContact2" class="remove-contact-link">Remove</label>
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <div class="field-label-row"><label class="field-label" for="c2-type">Type<span class="required-mark">*</span></label></div>
+        <select class="field-input" id="c2-type" name="contact2_type">
+          <option value="" selected>Select an option</option>
+          <option>Coordinator</option>
+          <option>MD</option>
+          <option>Social Worker</option>
+          <option>Registered Nurse</option>
+          <option>Authorized Representative</option>
+          <option>Emergency Contact</option>
+          <option>Service Navigator</option>
+          <option>Spouse</option>
+          <option>Family</option>
+          <option>Friend</option>
+        </select>
+      </div>
+      <div class="field-row-2">
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c2-first">First Name<span class="required-mark">*</span></label></div>
+          <input class="field-input" id="c2-first" name="contact2_first_name" type="text" placeholder="Enter value">
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c2-last">Last Name<span class="required-mark">*</span></label></div>
+          <input class="field-input" id="c2-last" name="contact2_last_name" type="text" placeholder="Enter value">
+        </div>
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <div class="field-label-row"><label class="field-label" for="c2-phone">Phone<span class="required-mark">*</span></label></div>
+        <input class="field-input" id="c2-phone" name="contact2_phone" type="tel" placeholder="Enter value">
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <div class="field-label-row"><label class="field-label" for="c2-email">Email</label></div>
+        <input class="field-input" id="c2-email" name="contact2_email" type="email" placeholder="Enter value">
+      </div>
+      <div class="field-row-2">
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c2-address">Address</label></div>
+          <input class="field-input" id="c2-address" name="contact2_address" type="text" placeholder="Enter value">
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c2-city">City</label></div>
+          <input class="field-input" id="c2-city" name="contact2_city" type="text" placeholder="Enter value">
+        </div>
+      </div>
+      <div class="field-row-2">
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c2-state">State</label></div>
+          <input class="field-input" id="c2-state" name="contact2_state" type="text" placeholder="Enter value">
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c2-zip">ZIP Code</label></div>
+          <input class="field-input" id="c2-zip" name="contact2_zip" type="text" placeholder="Enter value">
+        </div>
+      </div>
+    </div>
+
+    <label for="addContact3" class="add-contact-btn add-btn-2">
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      Add another care contact
+    </label>
+
+    <div class="contact-entry contact-entry-3">
+      <div class="contact-entry-head">
+        <p class="contact-entry-title">Care Contact 3</p>
+        <label for="addContact3" class="remove-contact-link">Remove</label>
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <div class="field-label-row"><label class="field-label" for="c3-type">Type<span class="required-mark">*</span></label></div>
+        <select class="field-input" id="c3-type" name="contact3_type">
+          <option value="" selected>Select an option</option>
+          <option>Coordinator</option>
+          <option>MD</option>
+          <option>Social Worker</option>
+          <option>Registered Nurse</option>
+          <option>Authorized Representative</option>
+          <option>Emergency Contact</option>
+          <option>Service Navigator</option>
+          <option>Spouse</option>
+          <option>Family</option>
+          <option>Friend</option>
+        </select>
+      </div>
+      <div class="field-row-2">
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c3-first">First Name<span class="required-mark">*</span></label></div>
+          <input class="field-input" id="c3-first" name="contact3_first_name" type="text" placeholder="Enter value">
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c3-last">Last Name<span class="required-mark">*</span></label></div>
+          <input class="field-input" id="c3-last" name="contact3_last_name" type="text" placeholder="Enter value">
+        </div>
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <div class="field-label-row"><label class="field-label" for="c3-phone">Phone<span class="required-mark">*</span></label></div>
+        <input class="field-input" id="c3-phone" name="contact3_phone" type="tel" placeholder="Enter value">
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <div class="field-label-row"><label class="field-label" for="c3-email">Email</label></div>
+        <input class="field-input" id="c3-email" name="contact3_email" type="email" placeholder="Enter value">
+      </div>
+      <div class="field-row-2">
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c3-address">Address</label></div>
+          <input class="field-input" id="c3-address" name="contact3_address" type="text" placeholder="Enter value">
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c3-city">City</label></div>
+          <input class="field-input" id="c3-city" name="contact3_city" type="text" placeholder="Enter value">
+        </div>
+      </div>
+      <div class="field-row-2">
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c3-state">State</label></div>
+          <input class="field-input" id="c3-state" name="contact3_state" type="text" placeholder="Enter value">
+        </div>
+        <div class="field" style="margin-bottom:0">
+          <div class="field-label-row"><label class="field-label" for="c3-zip">ZIP Code</label></div>
+          <input class="field-input" id="c3-zip" name="contact3_zip" type="text" placeholder="Enter value">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="cardCareNeeds">
+    <span class="card-tag"><span class="badge badge-core">Core</span></span>
+    <h1 class="form-title">Care Needs</h1>
+    <p class="section-sub">What kind of help is needed and who should provide it.</p>
+
+    <div class="field">
+      <div class="field-label-row"><span class="field-label" id="adlLabel">ADL Support Needed</span><span class="field-hint">tap a category to see its options</span></div>
+      <div class="adl-accordion" role="group" aria-labelledby="adlLabel">
+        <div class="adl-category" id="catBathing" style="--total:'5';">
+          <input type="checkbox" class="adl-cat-toggle visually-hidden" id="adlcat-bathing">
+          <div class="adl-category-items">
+            <div class="checkbox-item ai-fill-ring" id="checkBathingItem"><span class="ai-fill-check-wrap"><input type="checkbox" id="adl-1" name="adl" value="Bathing" checked><span class="ai-fill-check-mask" aria-hidden="true"></span></span><label for="adl-1">Bathing</label><span class="ai-fill-badge">✓ heard on call</span></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-2" name="adl" value="Bathing/Tub, shower or partial"><label for="adl-2">Bathing/Tub, shower or partial</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-3" name="adl" value="Bed Bath"><label for="adl-3">Bed Bath</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-4" name="adl" value="Showering"><label for="adl-4">Showering</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-5" name="adl" value="Sponge Bath"><label for="adl-5">Sponge Bath</label></div>
+          </div>
+          <label class="adl-cat-summary" for="adlcat-bathing"><span>Bathing <span class="count"></span></span><span class="chev" aria-hidden="true"></span></label>
+        </div>
+        <div class="adl-category" style="--total:'7';">
+          <input type="checkbox" class="adl-cat-toggle visually-hidden" id="adlcat-hygiene">
+          <div class="adl-category-items">
+            <div class="checkbox-item"><input type="checkbox" id="adl-6" name="adl" value="Assist Shaving"><label for="adl-6">Assist Shaving</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-7" name="adl" value="Catheter"><label for="adl-7">Catheter</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-8" name="adl" value="Hygiene Assistance"><label for="adl-8">Hygiene Assistance</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-9" name="adl" value="Nail Care"><label for="adl-9">Nail Care</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-10" name="adl" value="Oral Care"><label for="adl-10">Oral Care</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-11" name="adl" value="Peri Care"><label for="adl-11">Peri Care</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-12" name="adl" value="Skin Care"><label for="adl-12">Skin Care</label></div>
+          </div>
+          <label class="adl-cat-summary" for="adlcat-hygiene"><span>Hygiene <span class="count"></span></span><span class="chev" aria-hidden="true"></span></label>
+        </div>
+        <div class="adl-category" style="--total:'13';">
+          <input type="checkbox" class="adl-cat-toggle visually-hidden" id="adlcat-housekeeping">
+          <div class="adl-category-items">
+            <div class="checkbox-item"><input type="checkbox" id="adl-13" name="adl" value="Bathroom Cleanup"><label for="adl-13">Bathroom Cleanup</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-14" name="adl" value="Change the Sheets"><label for="adl-14">Change the Sheets</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-15" name="adl" value="Clean living areas"><label for="adl-15">Clean living areas</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-16" name="adl" value="Dishwashing"><label for="adl-16">Dishwashing</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-17" name="adl" value="Dispose of garbage"><label for="adl-17">Dispose of garbage</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-18" name="adl" value="Dusting"><label for="adl-18">Dusting</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-19" name="adl" value="Kitchen Cleanup"><label for="adl-19">Kitchen Cleanup</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-20" name="adl" value="Laundry"><label for="adl-20">Laundry</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-21" name="adl" value="Light Housekeeping"><label for="adl-21">Light Housekeeping</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-22" name="adl" value="Make bed"><label for="adl-22">Make bed</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-23" name="adl" value="Mopping"><label for="adl-23">Mopping</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-24" name="adl" value="Sweeping"><label for="adl-24">Sweeping</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-25" name="adl" value="Vacuuming"><label for="adl-25">Vacuuming</label></div>
+          </div>
+          <label class="adl-cat-summary" for="adlcat-housekeeping"><span>Light Housekeeping <span class="count"></span></span><span class="chev" aria-hidden="true"></span></label>
+        </div>
+        <div class="adl-category" style="--total:'2';">
+          <input type="checkbox" class="adl-cat-toggle visually-hidden" id="adlcat-lpn">
+          <div class="adl-category-items">
+            <div class="checkbox-item"><input type="checkbox" id="adl-26" name="adl" value="LPN PCT Visit"><label for="adl-26">LPN PCT Visit</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-27" name="adl" value="LPN visit"><label for="adl-27">LPN visit</label></div>
+          </div>
+          <label class="adl-cat-summary" for="adlcat-lpn"><span>LPN visit <span class="count"></span></span><span class="chev" aria-hidden="true"></span></label>
+        </div>
+        <div class="adl-category" style="--total:'2';">
+          <input type="checkbox" class="adl-cat-toggle visually-hidden" id="adlcat-medication">
+          <div class="adl-category-items">
+            <div class="checkbox-item"><input type="checkbox" id="adl-28" name="adl" value="Medication Reminders"><label for="adl-28">Medication Reminders</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-29" name="adl" value="Nebulizer Assist"><label for="adl-29">Nebulizer Assist</label></div>
+          </div>
+          <label class="adl-cat-summary" for="adlcat-medication"><span>Medication Assistance <span class="count"></span></span><span class="chev" aria-hidden="true"></span></label>
+        </div>
+        <div class="adl-category" style="--total:'5';">
+          <input type="checkbox" class="adl-cat-toggle visually-hidden" id="adlcat-misc">
+          <div class="adl-category-items">
+            <div class="checkbox-item"><input type="checkbox" id="adl-30" name="adl" value="Bed Bug Protocol"><label for="adl-30">Bed Bug Protocol</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-31" name="adl" value="Emergency Contact"><label for="adl-31">Emergency Contact</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-32" name="adl" value="Exercise reminders"><label for="adl-32">Exercise reminders</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-33" name="adl" value="Miscellaneous"><label for="adl-33">Miscellaneous</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-34" name="adl" value="Shopping"><label for="adl-34">Shopping</label></div>
+          </div>
+          <label class="adl-cat-summary" for="adlcat-misc"><span>Miscellaneous <span class="count"></span></span><span class="chev" aria-hidden="true"></span></label>
+        </div>
+        <div class="adl-category" id="catMobility" style="--total:'9';">
+          <input type="checkbox" class="adl-cat-toggle visually-hidden" id="adlcat-mobility">
+          <div class="adl-category-items">
+            <div class="checkbox-item"><input type="checkbox" id="adl-35" name="adl" value="Ambulation"><label for="adl-35">Ambulation</label></div>
+            <div class="checkbox-item ai-fill-ring" id="checkMobilityItem"><span class="ai-fill-check-wrap"><input type="checkbox" id="adl-36" name="adl" value="Assist with walking" checked><span class="ai-fill-check-mask" aria-hidden="true"></span></span><label for="adl-36">Assist with walking</label><span class="ai-fill-badge">✓ heard on call</span></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-37" name="adl" value="Hoyer Lift Assist"><label for="adl-37">Hoyer Lift Assist</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-38" name="adl" value="Positioning"><label for="adl-38">Positioning</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-39" name="adl" value="Stand By Assist"><label for="adl-39">Stand By Assist</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-40" name="adl" value="Transfer - Gait Belt"><label for="adl-40">Transfer - Gait Belt</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-41" name="adl" value="Transfer - Slide Board"><label for="adl-41">Transfer - Slide Board</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-42" name="adl" value="Transferring"><label for="adl-42">Transferring</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-43" name="adl" value="Turn Client"><label for="adl-43">Turn Client</label></div>
+          </div>
+          <label class="adl-cat-summary" for="adlcat-mobility"><span>Mobility <span class="count"></span></span><span class="chev" aria-hidden="true"></span></label>
+        </div>
+        <div class="adl-category" style="--total:'3';">
+          <input type="checkbox" class="adl-cat-toggle visually-hidden" id="adlcat-nutrition">
+          <div class="adl-category-items">
+            <div class="checkbox-item"><input type="checkbox" id="adl-44" name="adl" value="Cooking"><label for="adl-44">Cooking</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-45" name="adl" value="Encourage Fluids"><label for="adl-45">Encourage Fluids</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-46" name="adl" value="Meal Preparation"><label for="adl-46">Meal Preparation</label></div>
+          </div>
+          <label class="adl-cat-summary" for="adlcat-nutrition"><span>Nutrition <span class="count"></span></span><span class="chev" aria-hidden="true"></span></label>
+        </div>
+        <div class="adl-category" style="--total:'10';">
+          <input type="checkbox" class="adl-cat-toggle visually-hidden" id="adlcat-personalcare">
+          <div class="adl-category-items">
+            <div class="checkbox-item"><input type="checkbox" id="adl-47" name="adl" value="Apply Lotion"><label for="adl-47">Apply Lotion</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-48" name="adl" value="Assist Eating"><label for="adl-48">Assist Eating</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-49" name="adl" value="Compression Stockings"><label for="adl-49">Compression Stockings</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-50" name="adl" value="Dressing"><label for="adl-50">Dressing</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-51" name="adl" value="Grooming"><label for="adl-51">Grooming</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-52" name="adl" value="Hair Care"><label for="adl-52">Hair Care</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-53" name="adl" value="Personal Care"><label for="adl-53">Personal Care</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-54" name="adl" value="Refill Portable O2 Tank"><label for="adl-54">Refill Portable O2 Tank</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-55" name="adl" value="Respiratory Care"><label for="adl-55">Respiratory Care</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-56" name="adl" value="Shampoo Hair"><label for="adl-56">Shampoo Hair</label></div>
+          </div>
+          <label class="adl-cat-summary" for="adlcat-personalcare"><span>Personal Care <span class="count"></span></span><span class="chev" aria-hidden="true"></span></label>
+        </div>
+        <div class="adl-category" style="--total:'3';">
+          <input type="checkbox" class="adl-cat-toggle visually-hidden" id="adlcat-rnvisit">
+          <div class="adl-category-items">
+            <div class="checkbox-item"><input type="checkbox" id="adl-57" name="adl" value="CCT RN Visit"><label for="adl-57">CCT RN Visit</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-58" name="adl" value="RN PCT Visit"><label for="adl-58">RN PCT Visit</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-59" name="adl" value="RN visit"><label for="adl-59">RN visit</label></div>
+          </div>
+          <label class="adl-cat-summary" for="adlcat-rnvisit"><span>RN Visit <span class="count"></span></span><span class="chev" aria-hidden="true"></span></label>
+        </div>
+        <div class="adl-category" style="--total:'3';">
+          <input type="checkbox" class="adl-cat-toggle visually-hidden" id="adlcat-safety">
+          <div class="adl-category-items">
+            <div class="checkbox-item"><input type="checkbox" id="adl-60" name="adl" value="Fall Risk"><label for="adl-60">Fall Risk</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-61" name="adl" value="Safety Care"><label for="adl-61">Safety Care</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-62" name="adl" value="Safety Oversight"><label for="adl-62">Safety Oversight</label></div>
+          </div>
+          <label class="adl-cat-summary" for="adlcat-safety"><span>Safety <span class="count"></span></span><span class="chev" aria-hidden="true"></span></label>
+        </div>
+        <div class="adl-category" style="--total:'7';">
+          <input type="checkbox" class="adl-cat-toggle visually-hidden" id="adlcat-toileting">
+          <div class="adl-category-items">
+            <div class="checkbox-item"><input type="checkbox" id="adl-63" name="adl" value="Assist to Commode"><label for="adl-63">Assist to Commode</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-64" name="adl" value="Bedpan Assistance"><label for="adl-64">Bedpan Assistance</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-65" name="adl" value="Bladder Care"><label for="adl-65">Bladder Care</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-66" name="adl" value="Bowel Care"><label for="adl-66">Bowel Care</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-67" name="adl" value="Bowel Program"><label for="adl-67">Bowel Program</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-68" name="adl" value="Incontinence Care"><label for="adl-68">Incontinence Care</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-69" name="adl" value="Toileting Assistance"><label for="adl-69">Toileting Assistance</label></div>
+          </div>
+          <label class="adl-cat-summary" for="adlcat-toileting"><span>Toileting <span class="count"></span></span><span class="chev" aria-hidden="true"></span></label>
+        </div>
+        <div class="adl-category" style="--total:'6';">
+          <input type="checkbox" class="adl-cat-toggle visually-hidden" id="adlcat-vitals">
+          <div class="adl-category-items">
+            <div class="checkbox-item"><input type="checkbox" id="adl-70" name="adl" value="Blood Pressure"><label for="adl-70">Blood Pressure</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-71" name="adl" value="Pulse"><label for="adl-71">Pulse</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-72" name="adl" value="Pulse Ox"><label for="adl-72">Pulse Ox</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-73" name="adl" value="Respirations"><label for="adl-73">Respirations</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-74" name="adl" value="Temperature"><label for="adl-74">Temperature</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="adl-75" name="adl" value="Weigh Participant"><label for="adl-75">Weigh Participant</label></div>
+          </div>
+          <label class="adl-cat-summary" for="adlcat-vitals"><span>Vital Signs <span class="count"></span></span><span class="chev" aria-hidden="true"></span></label>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label" id="medHistoryLabel">Relevant Medical History</span></div>
+      <div class="checkbox-grid" role="group" aria-labelledby="medHistoryLabel">
+        <div class="checkbox-item"><input type="checkbox" id="mh-1" name="medical_history" value="ALS"><label for="mh-1">ALS</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-2" name="medical_history" value="Alzheimer's"><label for="mh-2">Alzheimer's</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-3" name="medical_history" value="Blood Disorder"><label for="mh-3">Blood Disorder</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-4" name="medical_history" value="Cancer Recovery"><label for="mh-4">Cancer Recovery</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-5" name="medical_history" value="Cardiovascular Disease"><label for="mh-5">Cardiovascular Disease</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-6" name="medical_history" value="Diabetes"><label for="mh-6">Diabetes</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-7" name="medical_history" value="Gastro/Int Disorders"><label for="mh-7">Gastro/Int Disorders</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-8" name="medical_history" value="Hospice Care"><label for="mh-8">Hospice Care</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-9" name="medical_history" value="Multiple Sclerosis"><label for="mh-9">Multiple Sclerosis</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-10" name="medical_history" value="Neurological Disorder"><label for="mh-10">Neurological Disorder</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-11" name="medical_history" value="Orthopedic Care"><label for="mh-11">Orthopedic Care</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-12" name="medical_history" value="Parkinson's Disease"><label for="mh-12">Parkinson's Disease</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-13" name="medical_history" value="Post Surgery Care"><label for="mh-13">Post Surgery Care</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-14" name="medical_history" value="Renal / Uro Disorders"><label for="mh-14">Renal / Uro Disorders</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-15" name="medical_history" value="Respiratory Disorders"><label for="mh-15">Respiratory Disorders</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-16" name="medical_history" value="Skin Disorders"><label for="mh-16">Skin Disorders</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-17" name="medical_history" value="Stroke"><label for="mh-17">Stroke</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-18" name="medical_history" value="HIV / AIDS"><label for="mh-18">HIV / AIDS</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-19" name="medical_history" value="Dementia"><label for="mh-19">Dementia</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-20" name="medical_history" value="COPD (Lung)"><label for="mh-20">COPD (Lung)</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-21" name="medical_history" value="Arthritis"><label for="mh-21">Arthritis</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-22" name="medical_history" value="Depression"><label for="mh-22">Depression</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-23" name="medical_history" value="Hearing Disorders"><label for="mh-23">Hearing Disorders</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-24" name="medical_history" value="Vision Disorders"><label for="mh-24">Vision Disorders</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-25" name="medical_history" value="Tracheotomy"><label for="mh-25">Tracheotomy</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-26" name="medical_history" value="Palliative Care"><label for="mh-26">Palliative Care</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="mh-27" name="medical_history" value="Home Health Care"><label for="mh-27">Home Health Care</label></div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><label class="field-label" for="caregiverGender">Preferred Caregiver Gender</label><span class="ai-fill-badge" id="badgeCaregiverGender">✓ mentioned on call</span></div>
+      <div id="fieldCaregiverGender" class="ai-fill-ring">
+        <select class="field-input" id="caregiverGender" name="caregiver_gender" aria-label="Preferred Caregiver Gender">
+          <option value="none" selected>No preference</option>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label" id="langLabel">Preferred Caregiver Language(s)</span></div>
+      <div class="checkbox-grid" role="group" aria-labelledby="langLabel">
+        <div class="checkbox-item"><input type="checkbox" id="lang-1" name="caregiver_languages" value="English"><label for="lang-1">English</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-2" name="caregiver_languages" value="A.S.L."><label for="lang-2">A.S.L.</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-3" name="caregiver_languages" value="Arabic"><label for="lang-3">Arabic</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-4" name="caregiver_languages" value="Armenian"><label for="lang-4">Armenian</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-5" name="caregiver_languages" value="Cantonese"><label for="lang-5">Cantonese</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-6" name="caregiver_languages" value="French"><label for="lang-6">French</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-7" name="caregiver_languages" value="German"><label for="lang-7">German</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-8" name="caregiver_languages" value="Greek"><label for="lang-8">Greek</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-9" name="caregiver_languages" value="Gujarati"><label for="lang-9">Gujarati</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-10" name="caregiver_languages" value="Hebrew"><label for="lang-10">Hebrew</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-11" name="caregiver_languages" value="Hindi"><label for="lang-11">Hindi</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-12" name="caregiver_languages" value="Italian"><label for="lang-12">Italian</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-13" name="caregiver_languages" value="Japanese"><label for="lang-13">Japanese</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-14" name="caregiver_languages" value="Korean"><label for="lang-14">Korean</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-15" name="caregiver_languages" value="Chinese Mandarin"><label for="lang-15">Chinese Mandarin</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-16" name="caregiver_languages" value="Persian"><label for="lang-16">Persian</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-17" name="caregiver_languages" value="Polish"><label for="lang-17">Polish</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-18" name="caregiver_languages" value="Portuguese"><label for="lang-18">Portuguese</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-19" name="caregiver_languages" value="Russian"><label for="lang-19">Russian</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-20" name="caregiver_languages" value="Spanish"><label for="lang-20">Spanish</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-21" name="caregiver_languages" value="Tagalog"><label for="lang-21">Tagalog</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-22" name="caregiver_languages" value="Urdu"><label for="lang-22">Urdu</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-23" name="caregiver_languages" value="Vietnamese"><label for="lang-23">Vietnamese</label></div>
+        <div class="checkbox-item"><input type="checkbox" id="lang-24" name="caregiver_languages" value="Hmong"><label for="lang-24">Hmong</label></div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><label class="field-label" for="otherInfo">Other Info for Caregiver Candidates</label></div>
+      <textarea class="field-input" id="otherInfo" name="other_info" placeholder="Anything else candidates should know"></textarea>
+    </div>
+  </div>
+
+  <div class="card" id="cardJobPlan">
+    <span class="card-tag"><span class="badge badge-core">Core</span></span>
+    <h1 class="form-title">Job and Care Plan Details</h1>
+    <p class="section-sub">Schedule, job posting details, and insurance for this referral.</p>
+
+    <div class="field">
+      <div class="field-label-row"><label class="field-label" for="jobTitle">Job Post Title</label><span class="field-hint">system-generated — tap the pencil to edit</span></div>
+      <div class="editable-field">
+        <input class="field-input" id="jobTitle" name="job_title" type="text" value="Caregiver Needed for Personal Care and Companionship">
+        <svg class="pencil-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11.3 2.3a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1 0 1.4L5.4 13l-2.7.7.7-2.7 8-8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><label class="field-label" for="jobDesc">Job Description</label><span class="field-hint">system-generated — tap the pencil to edit</span></div>
+      <div class="editable-field">
+        <textarea class="field-input" id="jobDesc" name="job_description">Caregiver needed to provide personal care support including bathing, dressing, and mobility assistance, plus companionship. Schedule and requirements are generated from the care plan details entered on this form — edit as needed before posting.</textarea>
+        <svg class="pencil-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11.3 2.3a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1 0 1.4L5.4 13l-2.7.7.7-2.7 8-8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-row-2">
+        <div>
+          <div class="field-label-row"><label class="field-label" for="startDate">Start Date</label></div>
+          <input class="field-input" id="startDate" name="start_date" type="date" aria-label="Start Date">
+        </div>
+        <div>
+          <div class="field-label-row"><label class="field-label" for="hoursWeek">Hours per Week</label></div>
+          <select class="field-input" id="hoursWeek" name="hours_per_week">
+            <option value="" selected>Select a range</option>
+            <option value="1-10">1–10 hours/week</option>
+            <option value="10-20">10–20 hours/week</option>
+            <option value="20+">20+ hours/week</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label" id="scheduleLabel">Available Schedule</span><span class="field-hint">check a day to set its time range</span><span class="ai-fill-badge" id="badgeSchedule">✓ mentioned on call — weekday mornings</span></div>
+      <div id="fieldSchedule" class="schedule-days ai-fill-ring" role="group" aria-labelledby="scheduleLabel">
+        <div class="schedule-day-row">
+          <span class="ai-fill-check-wrap"><input class="day-toggle" type="checkbox" id="day-mon" name="schedule_days" value="monday" checked><span class="ai-fill-check-mask" aria-hidden="true"></span></span>
+          <label class="day-name" for="day-mon">Monday</label>
+          <div class="schedule-times ai-fill-day-masked">
+            <input type="time" id="day-mon-start" name="schedule_monday_start" aria-label="Monday start time" value="09:00">
+            <span class="to">to</span>
+            <input type="time" id="day-mon-end" name="schedule_monday_end" aria-label="Monday end time" value="12:00">
+          </div>
+        </div>
+        <div class="schedule-day-row">
+          <span class="ai-fill-check-wrap"><input class="day-toggle" type="checkbox" id="day-tue" name="schedule_days" value="tuesday" checked><span class="ai-fill-check-mask" aria-hidden="true"></span></span>
+          <label class="day-name" for="day-tue">Tuesday</label>
+          <div class="schedule-times ai-fill-day-masked">
+            <input type="time" id="day-tue-start" name="schedule_tuesday_start" aria-label="Tuesday start time" value="09:00">
+            <span class="to">to</span>
+            <input type="time" id="day-tue-end" name="schedule_tuesday_end" aria-label="Tuesday end time" value="12:00">
+          </div>
+        </div>
+        <div class="schedule-day-row">
+          <span class="ai-fill-check-wrap"><input class="day-toggle" type="checkbox" id="day-wed" name="schedule_days" value="wednesday" checked><span class="ai-fill-check-mask" aria-hidden="true"></span></span>
+          <label class="day-name" for="day-wed">Wednesday</label>
+          <div class="schedule-times ai-fill-day-masked">
+            <input type="time" id="day-wed-start" name="schedule_wednesday_start" aria-label="Wednesday start time" value="09:00">
+            <span class="to">to</span>
+            <input type="time" id="day-wed-end" name="schedule_wednesday_end" aria-label="Wednesday end time" value="12:00">
+          </div>
+        </div>
+        <div class="schedule-day-row">
+          <span class="ai-fill-check-wrap"><input class="day-toggle" type="checkbox" id="day-thu" name="schedule_days" value="thursday" checked><span class="ai-fill-check-mask" aria-hidden="true"></span></span>
+          <label class="day-name" for="day-thu">Thursday</label>
+          <div class="schedule-times ai-fill-day-masked">
+            <input type="time" id="day-thu-start" name="schedule_thursday_start" aria-label="Thursday start time" value="09:00">
+            <span class="to">to</span>
+            <input type="time" id="day-thu-end" name="schedule_thursday_end" aria-label="Thursday end time" value="12:00">
+          </div>
+        </div>
+        <div class="schedule-day-row">
+          <span class="ai-fill-check-wrap"><input class="day-toggle" type="checkbox" id="day-fri" name="schedule_days" value="friday" checked><span class="ai-fill-check-mask" aria-hidden="true"></span></span>
+          <label class="day-name" for="day-fri">Friday</label>
+          <div class="schedule-times ai-fill-day-masked">
+            <input type="time" id="day-fri-start" name="schedule_friday_start" aria-label="Friday start time" value="09:00">
+            <span class="to">to</span>
+            <input type="time" id="day-fri-end" name="schedule_friday_end" aria-label="Friday end time" value="12:00">
+          </div>
+        </div>
+        <div class="schedule-day-row">
+          <input class="day-toggle" type="checkbox" id="day-sat" name="schedule_days" value="saturday">
+          <label class="day-name" for="day-sat">Saturday</label>
+          <div class="schedule-times">
+            <input type="time" id="day-sat-start" name="schedule_saturday_start" aria-label="Saturday start time" value="09:00">
+            <span class="to">to</span>
+            <input type="time" id="day-sat-end" name="schedule_saturday_end" aria-label="Saturday end time" value="17:00">
+          </div>
+        </div>
+        <div class="schedule-day-row">
+          <input class="day-toggle" type="checkbox" id="day-sun" name="schedule_days" value="sunday">
+          <label class="day-name" for="day-sun">Sunday</label>
+          <div class="schedule-times">
+            <input type="time" id="day-sun-start" name="schedule_sunday_start" aria-label="Sunday start time" value="09:00">
+            <span class="to">to</span>
+            <input type="time" id="day-sun-end" name="schedule_sunday_end" aria-label="Sunday end time" value="17:00">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><label class="field-label" for="insurance">Health Insurance</label><span class="ai-fill-badge" id="badgeInsurance">✓ auto-filled</span></div>
+      <div id="fieldInsurance" class="ai-fill-wrap">
+        <select class="field-input" id="insurance" name="health_insurance" aria-label="Health Insurance">
+          <option value="">Select one</option>
+          <option value="medicare" selected>Medicare</option>
+          <option value="ohp">OHP</option>
+          <option value="medicaid">Medicaid</option>
+          <option value="private">Private Pay</option>
+        </select>
+        <div class="ai-fill-mask" aria-hidden="true">Select one</div>
+            <svg class="ai-fill-pencil" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11.3 2.3a1 1 0 0 1 1.4 0l1 1a1 1 0 0 1 0 1.4L5.4 13l-2.7.7.7-2.7 8-8z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label" id="byocLabel">Bring Your Own Caregiver</span><span class="ai-fill-badge" id="badgeByoc">✓ mentioned on call</span></div>
+      <div id="fieldByoc" class="radio-group ai-fill-ring" role="group" aria-labelledby="byocLabel">
+        <div class="radio-item"><span class="ai-fill-check-wrap"><input type="radio" id="byoc-yes" name="byoc" value="yes"><span class="ai-fill-check-mask round" aria-hidden="true"></span></span><label for="byoc-yes">Yes</label></div>
+        <div class="radio-item"><span class="ai-fill-check-wrap"><input type="radio" id="byoc-no" name="byoc" value="no" checked><span class="ai-fill-check-mask round" aria-hidden="true"></span></span><label for="byoc-no">No</label></div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label" id="overnightLabel">24x7 / Overnight Care Required?</span><span class="ai-fill-badge" id="badgeOvernight">✓ mentioned on call</span></div>
+      <div id="fieldOvernight" class="radio-group ai-fill-ring" role="radiogroup" aria-labelledby="overnightLabel">
+        <div class="radio-item"><span class="ai-fill-check-wrap"><input type="radio" id="overnight-no" name="overnight_care" value="no" checked><span class="ai-fill-check-mask round" aria-hidden="true"></span></span><label for="overnight-no">No — daytime hours only</label></div>
+        <div class="radio-item"><span class="ai-fill-check-wrap"><input type="radio" id="overnight-overnight" name="overnight_care" value="overnight"><span class="ai-fill-check-mask round" aria-hidden="true"></span></span><label for="overnight-overnight">Yes — overnight care</label></div>
+        <div class="radio-item"><span class="ai-fill-check-wrap"><input type="radio" id="overnight-247" name="overnight_care" value="24x7"><span class="ai-fill-check-mask round" aria-hidden="true"></span></span><label for="overnight-247">Yes — 24x7 live-in care</label></div>
+      </div>
+      <div class="conditional-field">
+        <div class="field-label-row"><label class="field-label" for="overnightDays">Number of days required</label></div>
+        <input class="field-input" id="overnightDays" name="overnight_days_required" type="number" min="1" max="7" placeholder="e.g. 5">
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-collapsible">
+    <span class="card-tag"><span class="badge badge-module">VA module</span></span>
+    <input type="checkbox" class="module-toggle" id="modVA">
+    <label for="modVA" class="module-card-header">
+      <h1 class="form-title">VA Authorization</h1>
+      <span class="module-chev" aria-hidden="true"></span>
+    </label>
+    <div class="module-card-body"><div class="module-card-body-inner">
+    <p class="section-sub">For health-plan or benefit-funded programs.</p>
+
+    <div class="field">
+      <div class="field-label-row"><label class="field-label" for="benefitType">Benefit Type</label></div>
+      <select class="field-input" id="benefitType" name="benefit_type" aria-label="Benefit Type">
+        <option value="" selected>Select one</option>
+        <option value="hha">HHA</option>
+        <option value="respite">Respite</option>
+        <option value="both">Both</option>
+      </select>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label" id="benefitDatesLabel">Benefit Effective / Expiration Dates</span><span class="field-hint">per benefit type</span></div>
+      <div class="field-row-2" role="group" aria-labelledby="benefitDatesLabel">
+        <div><input class="field-input" id="benefitEffective" name="benefit_effective" type="date" aria-label="Benefit effective date"></div>
+        <div><input class="field-input" id="benefitExpiration" name="benefit_expiration" type="date" aria-label="Benefit expiration date"></div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-row-2">
+        <div>
+          <div class="field-label-row"><label class="field-label" for="authNumber">Referral / Authorization Number</label></div>
+          <input class="field-input" id="authNumber" name="authorization_number" type="text" placeholder="Per benefit type">
+        </div>
+        <div>
+          <div class="field-label-row"><label class="field-label" for="approvedHours">Approved Weekly Hours</label></div>
+          <input class="field-input" id="approvedHours" name="approved_weekly_hours" type="number" min="0" placeholder="Per benefit type">
+        </div>
+      </div>
+    </div>
+    </div></div>
+  </div>
+
+  <div class="card card-collapsible">
+    <span class="card-tag"><span class="badge badge-module">Optional module</span></span>
+    <input type="checkbox" class="module-toggle" id="modRefStaff">
+    <label for="modRefStaff" class="module-card-header">
+      <h1 class="form-title">Health System / Referring Staff Info</h1>
+      <span class="module-chev" aria-hidden="true"></span>
+    </label>
+    <div class="module-card-body"><div class="module-card-body-inner">
+    <p class="section-sub">For hospital, discharge-planner, and partner-staff referral sources.</p>
+
+    <div class="field">
+      <div class="field-label-row"><label class="field-label" for="refName">Referring Staff Name</label></div>
+      <input class="field-input" id="refName" name="referring_staff_name" type="text" placeholder="First and last name of referring staff">
+    </div>
+    <div class="field">
+      <div class="field-row-2">
+        <div>
+          <div class="field-label-row"><label class="field-label" for="refPhone">Referring Staff Phone</label></div>
+          <input class="field-input" id="refPhone" name="referring_staff_phone" type="tel" placeholder="Phone number">
+        </div>
+        <div>
+          <div class="field-label-row"><label class="field-label" for="refEmail">Referring Staff Email</label></div>
+          <input class="field-input" id="refEmail" name="referring_staff_email" type="email" placeholder="Email address">
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><label class="field-label" for="refLocation">Referring Location</label></div>
+      <select class="field-input" id="refLocation" name="referring_location" aria-label="Referring Location">
+        <option value="" selected>Select one</option>
+        <option value="hospital">Hospital</option>
+        <option value="snf">SNF</option>
+        <option value="clinic">Clinic</option>
+        <option value="other">Other discharge center</option>
+      </select>
+    </div>
+    </div></div>
+  </div>
+
+  <div class="card card-collapsible">
+    <span class="card-tag"><span class="badge badge-module">Optional module</span></span>
+    <input type="checkbox" class="module-toggle" id="modADL">
+    <label for="modADL" class="module-card-header">
+      <h1 class="form-title">ADL Calculator</h1>
+      <span class="module-chev" aria-hidden="true"></span>
+    </label>
+    <div class="module-card-body"><div class="module-card-body-inner">
+    <p class="section-sub">A guided questionnaire that recommends weekly care hours based on the care plan.</p>
+
+    <input type="checkbox" class="modal-toggle" id="adlModalToggle">
+    <label for="adlModalToggle" class="add-contact-btn">
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 2h10v12l-5-3-5 3V2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+      Open ADL Calculator
+    </label>
+
+    <div class="modal-overlay">
+      <div class="modal-panel">
+        <div class="modal-header">
+          <h2>ADL Calculator</h2>
+          <label for="adlModalToggle" class="modal-close" aria-label="Close">&times;</label>
+        </div>
+        <div class="modal-body">
+
+          <div class="adl-question">
+            <p class="adl-question-title">Do you need help with Bathing?<span class="required-mark">*</span></p>
+            <p class="adl-question-help">If the member just needs a reminder to bathe, choose "Low (15m - Verbal assist)".<br>If the member needs some physical assistance with bathing, choose "Moderate (30m - Some assist)".<br>If the member needs total assistance with bathing, choose "High (45m - Total assist)".</p>
+            <div class="rating-group" role="radiogroup" aria-label="Do you need help with Bathing?">
+              <div class="radio-item"><input type="radio" id="adlq-bathing-none" name="adl_bathing" value="none"><label for="adlq-bathing-none">None</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-bathing-low" name="adl_bathing" value="low"><label for="adlq-bathing-low">Low (15m - Verbal assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-bathing-mod" name="adl_bathing" value="moderate"><label for="adlq-bathing-mod">Moderate (30m - Some assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-bathing-high" name="adl_bathing" value="high"><label for="adlq-bathing-high">High (45m - Total assist)</label></div>
+            </div>
+          </div>
+
+          <div class="adl-question">
+            <p class="adl-question-title">Days per week bathing assistance is needed.<span class="required-mark">*</span></p>
+            <div class="days-picker" role="radiogroup" aria-label="Days per week bathing assistance is needed">
+              <div class="radio-item"><input type="radio" id="bathDays-1" name="bathing_days_per_week" value="1"><label for="bathDays-1">1</label></div>
+              <div class="radio-item"><input type="radio" id="bathDays-2" name="bathing_days_per_week" value="2"><label for="bathDays-2">2</label></div>
+              <div class="radio-item"><input type="radio" id="bathDays-3" name="bathing_days_per_week" value="3"><label for="bathDays-3">3</label></div>
+              <div class="radio-item"><input type="radio" id="bathDays-4" name="bathing_days_per_week" value="4"><label for="bathDays-4">4</label></div>
+              <div class="radio-item"><input type="radio" id="bathDays-5" name="bathing_days_per_week" value="5"><label for="bathDays-5">5</label></div>
+              <div class="radio-item"><input type="radio" id="bathDays-6" name="bathing_days_per_week" value="6"><label for="bathDays-6">6</label></div>
+              <div class="radio-item"><input type="radio" id="bathDays-7" name="bathing_days_per_week" value="7"><label for="bathDays-7">7</label></div>
+            </div>
+          </div>
+
+          <div class="adl-question">
+            <p class="adl-question-title">Do you need help with Grooming?<span class="required-mark">*</span></p>
+            <div class="adl-question-help">
+              <ul>
+                <li>Does veteran need verbal reminders to brush their teeth, comb their hair, etc.?</li>
+                <li>Does the member need physical assistance with brushing their teeth, combing their hair, etc.?</li>
+              </ul>
+              If the member just needs a verbal reminder to brush their teeth, combing their hair, etc., choose "Low (15m - Verbal assist)".<br>If the member needs some physical assistance with brushing teeth, combing hair, etc., choose "Moderate (30m - Some assist)".<br>If the member needs total assistance with brushing teeth, combing hair, etc., choose "High (45m - Total assist)".
+            </div>
+            <div class="rating-group" role="radiogroup" aria-label="Do you need help with Grooming?">
+              <div class="radio-item"><input type="radio" id="adlq-grooming-none" name="adl_grooming" value="none"><label for="adlq-grooming-none">None</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-grooming-low" name="adl_grooming" value="low"><label for="adlq-grooming-low">Low (5m - Verbal assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-grooming-mod" name="adl_grooming" value="moderate"><label for="adlq-grooming-mod">Moderate (10m - Some assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-grooming-high" name="adl_grooming" value="high"><label for="adlq-grooming-high">High (15m - Total assist)</label></div>
+            </div>
+          </div>
+
+          <div class="adl-question">
+            <p class="adl-question-title">Toileting:<span class="required-mark">*</span></p>
+            <div class="adl-question-help">
+              <ul>
+                <li>Do you have any problems getting to the bathroom and using the toilet?</li>
+                <li>Do you use incontinence supplies, and do you need assistance?</li>
+                <li>Do you need assistance changing or cleaning yourself? (If YES, Select Total Assistance)</li>
+              </ul>
+              If the member just needs minimal help when toileting, choose "Low (15m - Verbal assist)".<br>If the member answers yes to part one and two of these questions, choose "Moderate (30m - Some assist)".
+            </div>
+            <div class="rating-group" role="radiogroup" aria-label="Toileting">
+              <div class="radio-item"><input type="radio" id="adlq-toileting-none" name="adl_toileting" value="none"><label for="adlq-toileting-none">None</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-toileting-low" name="adl_toileting" value="low"><label for="adlq-toileting-low">Low (10m - Verbal assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-toileting-mod" name="adl_toileting" value="moderate"><label for="adlq-toileting-mod">Moderate (20m - Some assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-toileting-high" name="adl_toileting" value="high"><label for="adlq-toileting-high">High (30m - Total assist)</label></div>
+            </div>
+          </div>
+
+          <div class="adl-question">
+            <p class="adl-question-title">Transferring and Mobility:<span class="required-mark">*</span></p>
+            <div class="adl-question-help">
+              <ul>
+                <li>Can you get in and out of bed or chair?</li>
+                <li>Are you able to walk without help? Do you have problems with your balance?</li>
+              </ul>
+              If the member only needs help getting in and out of their bed or chair, choose "Low (15m - Verbal Assist)".<br>If the member needs help getting in and out of their bed/chair and has problems with their balance, choose "Moderate (30m - Moderate Assist)".<br>If the client needs assistance with all actions and are unable to walk without help, choose "High (45m - Total Assist)".
+            </div>
+            <div class="rating-group" role="radiogroup" aria-label="Transferring and Mobility">
+              <div class="radio-item"><input type="radio" id="adlq-transfer-none" name="adl_transfer" value="none"><label for="adlq-transfer-none">None</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-transfer-low" name="adl_transfer" value="low"><label for="adlq-transfer-low">Low (15m - Verbal assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-transfer-mod" name="adl_transfer" value="moderate"><label for="adlq-transfer-mod">Moderate (30m - Some assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-transfer-high" name="adl_transfer" value="high"><label for="adlq-transfer-high">High (45m - Total assist)</label></div>
+            </div>
+          </div>
+
+          <div class="adl-question">
+            <p class="adl-question-title">Does the veteran use a mobility device?<span class="required-mark">*</span></p>
+            <div class="radio-group" role="radiogroup" aria-label="Does the veteran use a mobility device?">
+              <div class="radio-item"><input type="radio" id="mobilityDevice-yes" name="mobility_device" value="yes"><label for="mobilityDevice-yes">Yes</label></div>
+              <div class="radio-item"><input type="radio" id="mobilityDevice-no" name="mobility_device" value="no"><label for="mobilityDevice-no">No</label></div>
+            </div>
+          </div>
+
+          <div class="adl-question">
+            <p class="adl-question-title">Companionship and emotional support:<span class="required-mark">*</span></p>
+            <div class="adl-question-help">
+              <ul>
+                <li>Do you need someone to help you feel less lonely, less scared, or less anxious? (If only this is Yes, choose low)</li>
+                <li>Do you need someone to stay with you, keep you company or help you do things with others? (If Yes, choose Moderate)</li>
+                <li>Do you wander at night or get confused at times or have trouble sleeping so that you need someone to be there for you? (If Yes, choose High)</li>
+              </ul>
+            </div>
+            <div class="rating-group" role="radiogroup" aria-label="Companionship and emotional support">
+              <div class="radio-item"><input type="radio" id="adlq-companion-none" name="adl_companionship" value="none"><label for="adlq-companion-none">None</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-companion-low" name="adl_companionship" value="low"><label for="adlq-companion-low">Low (15m - Verbal assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-companion-mod" name="adl_companionship" value="moderate"><label for="adlq-companion-mod">Moderate (30m - Some assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-companion-high" name="adl_companionship" value="high"><label for="adlq-companion-high">High (45m - Total assist)</label></div>
+            </div>
+          </div>
+
+          <div class="adl-question">
+            <p class="adl-question-title">Do you need help with Preparing meals?<span class="required-mark">*</span></p>
+            <div class="rating-group" role="radiogroup" aria-label="Do you need help with Preparing meals?">
+              <div class="radio-item"><input type="radio" id="adlq-meals-none" name="adl_meals" value="none"><label for="adlq-meals-none">None</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-meals-low" name="adl_meals" value="low"><label for="adlq-meals-low">Low (15m - Verbal assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-meals-mod" name="adl_meals" value="moderate"><label for="adlq-meals-mod">Moderate (30m - Some assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-meals-high" name="adl_meals" value="high"><label for="adlq-meals-high">High (45m - Total assist)</label></div>
+            </div>
+          </div>
+
+          <div class="adl-question">
+            <p class="adl-question-title">Housekeeping/Laundry — Can you clean your house? Can you do your laundry?<span class="required-mark">*</span></p>
+            <div class="rating-group" role="radiogroup" aria-label="Housekeeping/Laundry">
+              <div class="radio-item"><input type="radio" id="adlq-house-none" name="adl_housekeeping" value="none"><label for="adlq-house-none">None</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-house-low" name="adl_housekeeping" value="low"><label for="adlq-house-low">Low (60m - Verbal assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-house-mod" name="adl_housekeeping" value="moderate"><label for="adlq-house-mod">Moderate (90m - Some assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-house-high" name="adl_housekeeping" value="high"><label for="adlq-house-high">High (120m - Total assist)</label></div>
+            </div>
+          </div>
+
+          <div class="adl-question">
+            <p class="adl-question-title">Do you need reminders to take your medications?<span class="required-mark">*</span></p>
+            <div class="rating-group" role="radiogroup" aria-label="Do you need reminders to take your medications?">
+              <div class="radio-item"><input type="radio" id="adlq-meds-none" name="adl_medication" value="none"><label for="adlq-meds-none">None</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-meds-low" name="adl_medication" value="low"><label for="adlq-meds-low">Low (2m - Verbal assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-meds-mod" name="adl_medication" value="moderate"><label for="adlq-meds-mod">Moderate (4m - Some assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-meds-high" name="adl_medication" value="high"><label for="adlq-meds-high">High (8m - Total assist)</label></div>
+            </div>
+          </div>
+
+          <div class="adl-question">
+            <p class="adl-question-title">Do you need assistance communicating with others about important matters like scheduling caregiver visits, getting support with paying bills, resolving a bill or legal matter, etc.?<span class="required-mark">*</span></p>
+            <div class="rating-group" role="radiogroup" aria-label="Communication assistance">
+              <div class="radio-item"><input type="radio" id="adlq-comm-none" name="adl_communication" value="none"><label for="adlq-comm-none">None</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-comm-low" name="adl_communication" value="low"><label for="adlq-comm-low">Low (15m - Verbal assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-comm-mod" name="adl_communication" value="moderate"><label for="adlq-comm-mod">Moderate (20m - Some assist)</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-comm-high" name="adl_communication" value="high"><label for="adlq-comm-high">High (30m - Total assist)</label></div>
+            </div>
+          </div>
+
+          <div class="adl-question">
+            <p class="adl-question-title">Do you need help with other things not mentioned?<span class="required-mark">*</span></p>
+            <p class="adl-question-help">For example, help scheduling doctor appointments, reminders to check weight, reminders to check blood pressure, etc.</p>
+            <div class="radio-group" role="radiogroup" aria-label="Do you need help with other things not mentioned?">
+              <div class="radio-item"><input type="radio" id="adlq-other-yes" name="adl_other" value="yes"><label for="adlq-other-yes">Yes</label></div>
+              <div class="radio-item"><input type="radio" id="adlq-other-no" name="adl_other" value="no"><label for="adlq-other-no">No</label></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <label for="adlModalToggle" class="modal-done-btn">Save &amp; Close</label>
+        </div>
+      </div>
+    </div>
+    </div></div>
+  </div>
+
+  </div>
+
+  <p class="footer-note">Proposed structure — built on top of the 126-program, 4,137-entry dataset reviewed on the Current State page. Every field above is a live, fillable control.</p>
+
+  </div>
+
+</div>
+</body>
+</html>

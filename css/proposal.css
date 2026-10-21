@@ -1,0 +1,1288 @@
+html { scroll-behavior: smooth; }
+
+.page-shell { display: flex; align-items: flex-start; justify-content: center; gap: 28px; max-width: 1520px; margin: 0 auto; padding: 56px 24px 96px; }
+.voice-rail { width: 640px; flex-shrink: 0; position: relative; }
+.wrap { max-width: 800px; width: 800px; display: flex; flex-direction: column; gap: 24px; position: relative; }
+
+.module-toggle { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.module-card-header { display: flex; align-items: center; gap: 10px; cursor: pointer; margin: 0 150px 0 0; }
+.module-card-header:hover .form-title { color: #0C4C43; }
+.module-card-header .form-title { margin: 0; }
+.module-chev { width: 10px; height: 10px; border-right: 2px solid #9A9A9E; border-bottom: 2px solid #9A9A9E; transform: rotate(-45deg); transition: transform .15s; flex-shrink: 0; margin-left: auto; }
+.module-toggle:checked ~ .module-card-header .module-chev { transform: rotate(45deg); }
+.module-card-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .25s ease; }
+.module-toggle:checked ~ .module-card-body { grid-template-rows: 1fr; }
+.module-card-body-inner { overflow: hidden; min-height: 0; padding-top: 18px; }
+
+.eyebrow { font-style: italic; font-size: 14px; color: #6B6B6B; margin: 0 0 28px; }
+.form-title { font-size: 26px; font-weight: 700; color: #116659; margin: 0 0 4px; }
+.section-subhead { font-size: 11.5px; font-weight: 700; color: #8A8A8E; text-transform: uppercase; letter-spacing: 0.04em; margin: 28px 0 14px; padding-top: 24px; border-top: 1px solid #EDEDED; }
+
+.field-label-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; min-height: 0; }
+.field-label { font-size: 13px; color: #2B2B2B; font-weight: 500; display: inline-block; }
+.field-hint { font-size: 11.5px; color: #9A9A9E; font-weight: 400; }
+
+.field-input { border: 1px solid #D4D4D6; border-radius: 7px; padding: 11px 14px; font-size: 14px; color: #2B2B2B; font-style: normal; background: #FEFEFE; width: 100%; box-sizing: border-box; font-family: inherit; display: block; }
+.field-input::placeholder { color: #A4A4A8; font-style: italic; }
+.field-input:focus { outline: 2px solid #116659; outline-offset: 1px; border-color: #116659; }
+textarea.field-input { resize: vertical; min-height: 68px; line-height: 1.5; }
+select.field-input { cursor: pointer; }
+
+.field-row-2 { display: flex; gap: 14px; }
+.field-row-2 > div { flex: 1; }
+.field-row-3 { display: flex; gap: 14px; }
+.field-row-3 > div { flex: 1; }
+
+.checkbox-group, .radio-group { display: flex; flex-wrap: wrap; gap: 10px 20px; border: 1px solid #D4D4D6; border-radius: 7px; padding: 13px 14px; background: #FEFEFE; }
+.checkbox-item, .radio-item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: #2B2B2B; }
+.checkbox-item input, .radio-item input { width: 16px; height: 16px; accent-color: #116659; cursor: pointer; flex-shrink: 0; }
+.checkbox-item label, .radio-item label { cursor: pointer; }
+
+.adl-accordion { border: 1px solid #D4D4D6; border-radius: 7px; background: #FEFEFE; overflow: hidden; }
+.adl-category { border-top: 1px solid #ECECEC; counter-reset: selected 0; display: flex; flex-direction: column; }
+.adl-category:first-child { border-top: none; }
+.adl-cat-summary { order: 1; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; font-size: 13px; font-weight: 600; color: #2B2B2B; }
+.adl-cat-summary:hover { background: #FAFAF9; }
+.adl-cat-summary .count { font-size: 11px; font-weight: 600; color: #9A9A9E; margin-left: 4px; }
+.adl-cat-summary .count::after { content: counter(selected) "/" var(--total) " selected"; }
+.adl-category:has(.adl-category-items input:not(#adl-1):not(#adl-36):checked) .adl-cat-summary .count { color: #116659; }
+body:has(#v7:checked, #v8:checked, #v9:checked, #v10:checked, #v11:checked, #v12:checked, #v13:checked, #v14:checked, #v15:checked, #v16:checked, #vEnded:checked) #catBathing .adl-cat-summary .count { color: #116659; }
+body:has(#v8:checked, #v9:checked, #v10:checked, #v11:checked, #v12:checked, #v13:checked, #v14:checked, #v15:checked, #v16:checked, #vEnded:checked) #catMobility .adl-cat-summary .count { color: #116659; }
+.adl-cat-summary .chev { width: 8px; height: 8px; border-right: 2px solid #9A9A9E; border-bottom: 2px solid #9A9A9E; transform: rotate(-45deg); transition: transform .15s; flex-shrink: 0; }
+.adl-category:has(.adl-cat-toggle:checked) .adl-cat-summary .chev { transform: rotate(45deg); }
+.adl-category-items { order: 2; max-height: 0; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; padding: 0 16px; }
+.adl-category:has(.adl-cat-toggle:checked) .adl-category-items { max-height: 2000px; gap: 8px 16px; padding: 2px 16px 16px; }
+.adl-category-items input:not(#adl-1):not(#adl-36):checked { counter-increment: selected; }
+body:has(#v7:checked, #v8:checked, #v9:checked, #v10:checked, #v11:checked, #v12:checked, #v13:checked, #v14:checked, #v15:checked, #v16:checked, #vEnded:checked) #adl-1:checked { counter-increment: selected; }
+body:has(#v8:checked, #v9:checked, #v10:checked, #v11:checked, #v12:checked, #v13:checked, #v14:checked, #v15:checked, #v16:checked, #vEnded:checked) #adl-36:checked { counter-increment: selected; }
+
+.checkbox-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 16px; border: 1px solid #D4D4D6; border-radius: 7px; padding: 13px 14px; background: #FEFEFE; }
+
+.editable-field { position: relative; }
+.editable-field .field-input { padding-right: 40px; background: #FAFAF9; }
+.editable-field .pencil-icon { position: absolute; top: 18px; right: 14px; width: 15px; height: 15px; color: #8A8A8E; pointer-events: none; }
+.editable-field textarea.field-input ~ .pencil-icon { top: 14px; }
+
+.modal-toggle { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(20,20,19,0.55); z-index: 50; align-items: flex-start; justify-content: center; padding: 48px 24px; overflow-y: auto; }
+#adlModalToggle:checked ~ .modal-overlay { display: flex; }
+.modal-panel { background: #FFFFFF; border-radius: 14px; max-width: 640px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 22px 28px; border-bottom: 1px solid #EDEDED; position: sticky; top: 0; background: #FFFFFF; border-radius: 14px 14px 0 0; }
+.modal-header h2 { margin: 0; font-size: 19px; font-weight: 700; color: #141413; }
+.modal-close { cursor: pointer; font-size: 20px; line-height: 1; color: #8A8A8E; padding: 4px 10px; border-radius: 6px; }
+.modal-close:hover { background: #F4F4F4; color: #2B2B2B; }
+.modal-body { padding: 26px 28px; display: flex; flex-direction: column; gap: 30px; max-height: calc(100vh - 220px); overflow-y: auto; }
+.modal-footer { padding: 16px 28px; border-top: 1px solid #EDEDED; display: flex; justify-content: flex-end; position: sticky; bottom: 0; background: #FFFFFF; border-radius: 0 0 14px 14px; }
+.modal-done-btn { display: inline-flex; align-items: center; background: #116659; color: #FFFFFF; font-size: 13px; font-weight: 600; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-family: inherit; }
+.modal-done-btn:hover { background: #0C4C43; }
+
+.adl-question { display: flex; flex-direction: column; gap: 10px; padding-top: 22px; border-top: 1px solid #F0F0F0; }
+.adl-question:first-child { padding-top: 0; border-top: none; }
+.adl-question-title { font-size: 13.5px; font-weight: 600; color: #141413; margin: 0; }
+.adl-question-help { font-size: 12.5px; color: #6B6B6B; line-height: 1.6; margin: 0; }
+.adl-question-help ul { margin: 4px 0; padding-left: 18px; }
+.adl-question-help li { margin-bottom: 2px; }
+
+.rating-group { display: flex; flex-direction: column; gap: 9px; border: 1px solid #D4D4D6; border-radius: 7px; padding: 12px 14px; background: #FEFEFE; }
+.days-picker { display: flex; flex-wrap: wrap; gap: 8px 16px; border: 1px solid #D4D4D6; border-radius: 7px; padding: 12px 14px; background: #FEFEFE; }
+
+.conditional-field { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px dashed #D9D9D9; }
+.field:has(#overnight-overnight:checked) .conditional-field,
+.field:has(#overnight-247:checked) .conditional-field { display: block; }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+.elig-demo-row { display: flex; align-items: center; gap: 8px; margin: 0 0 16px; }
+.elig-demo-label { font-size: 11px; font-weight: 700; color: #9A9A9E; text-transform: uppercase; letter-spacing: .03em; }
+.elig-actions-row { display: flex; align-items: center; gap: 14px; margin-top: 2px; flex-wrap: wrap; }
+.elig-check-btn { display: inline-flex; align-items: center; gap: 8px; background: #116659; color: #FFFFFF; font-size: 13.5px; font-weight: 700; padding: 11px 22px; border-radius: 8px; cursor: pointer; font-family: inherit; white-space: nowrap; border: 0; }
+.elig-check-btn:hover { background: #0C4C43; }
+.elig-result { display: none; align-items: flex-start; gap: 12px; margin-top: 18px; padding: 14px 16px; border-radius: 10px; }
+.elig-result-icon { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #FFFFFF; }
+.elig-result-icon svg { width: 13px; height: 13px; }
+.elig-result-title { margin: 0 0 3px; font-size: 13.5px; font-weight: 700; }
+.elig-result-sub { margin: 0; font-size: 12.5px; line-height: 1.5; }
+.elig-result-found { background: #EAF6F1; border: 1px solid #BFE3D2; }
+.elig-result-found .elig-result-icon { background: #116659; }
+.elig-result-found .elig-result-title { color: #0C4C43; }
+.elig-result-found .elig-result-sub { color: #2B2B2B; }
+.elig-result-notfound { background: #FBEDEA; border: 1px solid #F3C6BC; }
+.elig-result-notfound .elig-result-icon { background: #B3432E; }
+.elig-result-notfound .elig-result-title { color: #8A3220; }
+.elig-result-notfound .elig-result-sub { color: #2B2B2B; }
+body:has(#eligCheckToggle:checked):has(#eligDemoFound:checked):not(:has(#formCleared:checked)) .elig-result-found { display: flex; }
+body:has(#eligCheckToggle:checked):has(#eligDemoNotFound:checked):not(:has(#formCleared:checked)) .elig-result-notfound { display: flex; }
+
+.docupload-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.docupload-btn { display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 700; color: #1A5A96; background: #EFF7FC; border: 1px solid #CFE6F7; cursor: pointer; padding: 11px 20px; border-radius: 8px; white-space: nowrap; font-family: inherit; }
+.docupload-btn:hover { background: #E3F0FC; }
+.docupload-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+.docupload-done { display: none; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 700; color: #116659; background: #E7F3EF; border: 1px solid #BFE3D2; padding: 11px 16px; border-radius: 8px; flex: 1 1 auto; min-width: 0; }
+.docupload-done svg { width: 16px; height: 16px; flex-shrink: 0; }
+.docupload-done span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.docupload-remove-btn { display: none; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; color: #9A3B3B; background: #FFFFFF; border: 1px solid #F0D4D0; cursor: pointer; padding: 10px 14px; border-radius: 8px; white-space: nowrap; font-family: inherit; }
+.docupload-remove-btn:hover { background: #FBEDEA; }
+body:has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)):not(:has(#formCleared:checked)) .docupload-btn { display: none; }
+body:has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)):not(:has(#formCleared:checked)) .docupload-done { display: inline-flex; }
+body:has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)):not(:has(#formCleared:checked)) .docupload-remove-btn { display: inline-flex; }
+body:has(#ocrRemoved:checked) .docupload-btn { display: inline-flex; }
+
+.form-clear-row { display: flex; justify-content: flex-end; margin-top: 18px; padding-top: 16px; border-top: 1px solid #EDEDED; }
+.form-clear-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; color: #6B6B6B; background: #FFFFFF; border: 1px solid #D9D9D9; cursor: pointer; padding: 9px 14px; border-radius: 8px; white-space: nowrap; font-family: inherit; }
+.form-clear-btn:hover { background: #F4F4F4; color: #9A3B3B; border-color: #F0D4D0; }
+
+.program-select-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+.program-pill { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; flex: 1 1 170px; min-width: 150px; padding: 14px 16px; border: 1.5px solid #D9D9D9; border-radius: 10px; cursor: pointer; background: #FFFFFF; transition: border-color .12s, background .12s; }
+.program-pill:hover { border-color: #116659; }
+.program-pill-name { font-size: 14px; font-weight: 700; color: #2B2B2B; }
+.program-pill-note { font-size: 11px; font-weight: 500; color: #9A9A9E; }
+.program-toggle:checked + .program-pill { background: #EAF6F1; border-color: #116659; }
+.program-toggle:checked + .program-pill .program-pill-name { color: #0C4C43; }
+.program-toggle:checked + .program-pill .program-pill-note { color: #116659; }
+
+#cardEligibility, #cardDocUpload { display: none; }
+body:has(#progPayer:checked) #cardEligibility { display: block; }
+body:has(#progVA:checked) #cardDocUpload { display: block; }
+
+#mainFormSection { opacity: 0.45; filter: grayscale(0.6); pointer-events: none; transition: opacity .18s, filter .18s; }
+body:has(#progDischarge:checked) #mainFormSection,
+body:has(#progGuide:checked) #mainFormSection,
+body:has(#progPayer:checked):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #mainFormSection,
+body:has(#progVA:checked):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #mainFormSection,
+body:has(#v1:checked) #mainFormSection,
+body:has(#v2:checked) #mainFormSection,
+body:has(#v3:checked) #mainFormSection,
+body:has(#v4:checked) #mainFormSection,
+body:has(#v5:checked) #mainFormSection,
+body:has(#v6:checked) #mainFormSection,
+body:has(#v7:checked) #mainFormSection,
+body:has(#v8:checked) #mainFormSection,
+body:has(#v9:checked) #mainFormSection,
+body:has(#v10:checked) #mainFormSection,
+body:has(#v11:checked) #mainFormSection,
+body:has(#v12:checked) #mainFormSection,
+body:has(#v13:checked) #mainFormSection,
+body:has(#v14:checked) #mainFormSection,
+body:has(#v15:checked) #mainFormSection,
+body:has(#v16:checked) #mainFormSection,
+body:has(#vEnded:checked) #mainFormSection {
+  opacity: 1; filter: none; pointer-events: auto;
+}
+
+.form-lock-banner { display: flex; align-items: flex-start; gap: 12px; padding: 16px 18px; border-radius: 10px; background: #F4F4F4; border: 1px solid #E2E2E2; margin-bottom: 20px; }
+.form-lock-banner-icon { width: 26px; height: 26px; border-radius: 50%; background: #9A9A9E; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #FFFFFF; }
+.form-lock-banner-icon svg { width: 12px; height: 12px; }
+.form-lock-banner-title { margin: 0 0 3px; font-size: 13.5px; font-weight: 700; color: #4A4A4A; }
+.form-lock-banner-sub { margin: 0; font-size: 12.5px; line-height: 1.5; color: #6B6B6B; }
+.form-lock-none, .form-lock-payer, .form-lock-va { display: none; }
+body:not(:has(#progPayer:checked)):not(:has(#progVA:checked)):not(:has(#progDischarge:checked)):not(:has(#progGuide:checked)) .form-lock-none {
+  display: flex;
+}
+body:has(#progPayer:checked):not(:has(#eligCheckToggle:checked)) .form-lock-payer,
+body:has(#progPayer:checked):not(:has(#eligDemoFound:checked)) .form-lock-payer {
+  display: flex;
+}
+body:has(#progVA:checked):not(:has(#ocrUpload:valid)) .form-lock-va,
+body:has(#progVA:checked):has(#ocrRemoved:checked) .form-lock-va {
+  display: flex;
+}
+
+.voice-collapsible { background: linear-gradient(135deg, #EAF4FC, #F7FBFE); border: 1px solid #CFE6F7; border-radius: 14px; overflow: hidden; position: absolute; left: 0; width: 640px; z-index: 5; transition: top .35s ease; top: 48px; }
+/* Visual-only: the voice card slides alongside whichever section the call step is currently filling. */
+body:has(#v7:checked) .voice-collapsible,
+body:has(#v8:checked) .voice-collapsible,
+body:has(#v9:checked) .voice-collapsible { top: 1342px; }
+body:has(#v10:checked) .voice-collapsible,
+body:has(#v11:checked) .voice-collapsible,
+body:has(#v12:checked) .voice-collapsible,
+body:has(#v13:checked) .voice-collapsible { top: 2910px; }
+body:has(#v14:checked) .voice-collapsible,
+body:has(#v15:checked) .voice-collapsible,
+body:has(#v16:checked) .voice-collapsible { top: 687px; }
+.voice-collapsible-summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 16px 18px; flex-wrap: wrap; row-gap: 6px; }
+.voice-collapsible-summary:hover { background: rgba(255,255,255,0.45); }
+.voice-collapsible-chev { width: 9px; height: 9px; border-right: 2px solid #5B7FA6; border-bottom: 2px solid #5B7FA6; transform: rotate(-45deg); transition: transform .15s; flex-shrink: 0; margin-left: auto; }
+.voice-open-toggle:checked ~ .voice-collapsible-summary .voice-collapsible-chev { transform: rotate(45deg); }
+.voice-card-inner { padding: 4px 18px 20px; display: none; }
+.voice-open-toggle:checked ~ .voice-card-inner { display: block; }
+
+.voice-idle { display: flex; flex-direction: column; gap: 14px; }
+.voice-idle-head { display: flex; align-items: center; gap: 14px; }
+.voice-active, .voice-summary { display: none; flex-direction: column; gap: 16px; }
+body:has(#v1:checked, #v2:checked, #v3:checked, #v4:checked, #v5:checked, #v6:checked, #v7:checked, #v8:checked, #v9:checked, #v10:checked, #v11:checked, #v12:checked, #v13:checked, #v14:checked, #v15:checked, #v16:checked) .voice-card-inner .voice-idle,
+body:has(#vEnded:checked) .voice-card-inner .voice-idle { display: none; }
+body:has(#v1:checked, #v2:checked, #v3:checked, #v4:checked, #v5:checked, #v6:checked, #v7:checked, #v8:checked, #v9:checked, #v10:checked, #v11:checked, #v12:checked, #v13:checked, #v14:checked, #v15:checked, #v16:checked) .voice-card-inner .voice-active { display: flex; }
+body:has(#vEnded:checked) .voice-card-inner .voice-summary { display: flex; }
+
+.voice-icon-circle { width: 40px; height: 40px; border-radius: 50%; background: #1A5A96; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #FFFFFF; }
+.voice-icon-circle svg { width: 17px; height: 17px; }
+.voice-text { flex: 1; min-width: 0; }
+.voice-title { margin: 0; font-size: 14.5px; font-weight: 700; color: #141413; }
+.voice-sub { margin: 0; font-size: 13px; color: #3F4A54; line-height: 1.5; font-weight: 500; }
+
+.voice-call-btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; background: #1A5A96; color: #FFFFFF; font-size: 13px; font-weight: 600; padding: 11px 18px; border-radius: 8px; cursor: pointer; white-space: nowrap; font-family: inherit; width: 100%; text-decoration: none; }
+.voice-call-btn:hover { background: #134772; }
+.voice-call-btn svg { width: 14px; height: 14px; }
+
+.voice-active-head { display: flex; align-items: center; gap: 14px; }
+.voice-hangup-btn { margin-left: 0; display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: #FBE8E8; color: #9A3B3B; font-size: 12.5px; font-weight: 600; padding: 9px 15px; border-radius: 8px; cursor: pointer; white-space: nowrap; font-family: inherit; width: 100%; text-decoration: none; }
+.voice-hangup-btn:hover { background: #F6D5D5; }
+
+.voice-wave { display: flex; align-items: center; justify-content: center; gap: 3px; width: 40px; height: 40px; flex-shrink: 0; background: #1A5A96; border-radius: 50%; }
+.voice-wave span { width: 2.5px; border-radius: 2px; background: #FFFFFF; animation: voiceWave 1s ease-in-out infinite; }
+.voice-wave span:nth-child(1) { height: 8px; animation-delay: 0s; }
+.voice-wave span:nth-child(2) { height: 16px; animation-delay: .1s; }
+.voice-wave span:nth-child(3) { height: 20px; animation-delay: .2s; }
+.voice-wave span:nth-child(4) { height: 14px; animation-delay: .3s; }
+.voice-wave span:nth-child(5) { height: 9px; animation-delay: .4s; }
+@keyframes voiceWave { 0%, 100% { transform: scaleY(0.5); } 50% { transform: scaleY(1); } }
+
+.voice-transcript { background: #FFFFFF; border: 1px solid #D9E8F3; border-radius: 10px; padding: 14px 15px; display: flex; flex-direction: column; gap: 4px; font-size: 13px; line-height: 1.55; max-height: 300px; overflow-y: auto; }
+.voice-transcript p { margin: 0; color: #2B2B2B; }
+.voice-patient { font-weight: 700; color: #141413; }
+.voice-advisor { font-weight: 700; color: #1A5A96; }
+.voice-transcript .turn { padding: 8px 10px; border-radius: 8px; border-left: 3px solid transparent; opacity: .45; transition: opacity .15s, background-color .15s; }
+.voice-transcript .turn p + p { margin-top: 6px; }
+body:has(#v1:checked) .voice-card-inner .turn-name,
+body:has(#v2:checked) .voice-card-inner .turn-dob,
+body:has(#v3:checked) .voice-card-inner .turn-genderCareFor,
+body:has(#v4:checked) .voice-card-inner .turn-genderCareFor,
+body:has(#v5:checked) .voice-card-inner .turn-phone,
+body:has(#v6:checked) .voice-card-inner .turn-address,
+body:has(#v7:checked) .voice-card-inner .turn-adl,
+body:has(#v8:checked) .voice-card-inner .turn-adl,
+body:has(#v9:checked) .voice-card-inner .turn-caregiverGender,
+body:has(#v10:checked) .voice-card-inner .turn-insurance,
+body:has(#v11:checked) .voice-card-inner .turn-overnight,
+body:has(#v12:checked) .voice-card-inner .turn-schedule,
+body:has(#v13:checked) .voice-card-inner .turn-byoc,
+body:has(#v14:checked) .voice-card-inner .turn-contactIntro,
+body:has(#v15:checked) .voice-card-inner .turn-contactIntro,
+body:has(#v16:checked) .voice-card-inner .turn-contactPhone { opacity: 1; background: #EFF7FC; border-left-color: #1A5A96; }
+
+.voice-filled-list { display: flex; flex-direction: column; gap: 9px; }
+.voice-filled-label { margin: 0; font-size: 11px; font-weight: 700; color: #5B6670; text-transform: uppercase; letter-spacing: .04em; }
+.voice-filled-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.voice-filled-chip { display: inline-flex; align-items: center; gap: 5px; background: #FFFFFF; border: 1px solid #CFE6F7; color: #B9C7D4; font-size: 12.5px; font-weight: 600; padding: 6px 12px; border-radius: 999px; transition: color .15s, border-color .15s; }
+body:has(#v1:checked) .voice-card-inner .vf-1,
+body:has(#v2:checked) .voice-card-inner .vf-1,
+body:has(#v3:checked) .voice-card-inner .vf-1,
+body:has(#v4:checked) .voice-card-inner .vf-1,
+body:has(#v5:checked) .voice-card-inner .vf-1,
+body:has(#v6:checked) .voice-card-inner .vf-1,
+body:has(#v7:checked) .voice-card-inner .vf-1,
+body:has(#v8:checked) .voice-card-inner .vf-1,
+body:has(#v9:checked) .voice-card-inner .vf-1,
+body:has(#v10:checked) .voice-card-inner .vf-1,
+body:has(#v11:checked) .voice-card-inner .vf-1,
+body:has(#v12:checked) .voice-card-inner .vf-1,
+body:has(#v13:checked) .voice-card-inner .vf-1,
+body:has(#v14:checked) .voice-card-inner .vf-1,
+body:has(#v15:checked) .voice-card-inner .vf-1,
+body:has(#v16:checked) .voice-card-inner .vf-1,
+body:has(#vEnded:checked) .voice-card-inner .vf-1 { color: #1A5A96; border-color: #1A5A96; }
+body:has(#v2:checked) .voice-card-inner .vf-2,
+body:has(#v3:checked) .voice-card-inner .vf-2,
+body:has(#v4:checked) .voice-card-inner .vf-2,
+body:has(#v5:checked) .voice-card-inner .vf-2,
+body:has(#v6:checked) .voice-card-inner .vf-2,
+body:has(#v7:checked) .voice-card-inner .vf-2,
+body:has(#v8:checked) .voice-card-inner .vf-2,
+body:has(#v9:checked) .voice-card-inner .vf-2,
+body:has(#v10:checked) .voice-card-inner .vf-2,
+body:has(#v11:checked) .voice-card-inner .vf-2,
+body:has(#v12:checked) .voice-card-inner .vf-2,
+body:has(#v13:checked) .voice-card-inner .vf-2,
+body:has(#v14:checked) .voice-card-inner .vf-2,
+body:has(#v15:checked) .voice-card-inner .vf-2,
+body:has(#v16:checked) .voice-card-inner .vf-2,
+body:has(#vEnded:checked) .voice-card-inner .vf-2 { color: #1A5A96; border-color: #1A5A96; }
+body:has(#v3:checked) .voice-card-inner .vf-3,
+body:has(#v4:checked) .voice-card-inner .vf-3,
+body:has(#v5:checked) .voice-card-inner .vf-3,
+body:has(#v6:checked) .voice-card-inner .vf-3,
+body:has(#v7:checked) .voice-card-inner .vf-3,
+body:has(#v8:checked) .voice-card-inner .vf-3,
+body:has(#v9:checked) .voice-card-inner .vf-3,
+body:has(#v10:checked) .voice-card-inner .vf-3,
+body:has(#v11:checked) .voice-card-inner .vf-3,
+body:has(#v12:checked) .voice-card-inner .vf-3,
+body:has(#v13:checked) .voice-card-inner .vf-3,
+body:has(#v14:checked) .voice-card-inner .vf-3,
+body:has(#v15:checked) .voice-card-inner .vf-3,
+body:has(#v16:checked) .voice-card-inner .vf-3,
+body:has(#vEnded:checked) .voice-card-inner .vf-3 { color: #1A5A96; border-color: #1A5A96; }
+body:has(#v4:checked) .voice-card-inner .vf-4,
+body:has(#v5:checked) .voice-card-inner .vf-4,
+body:has(#v6:checked) .voice-card-inner .vf-4,
+body:has(#v7:checked) .voice-card-inner .vf-4,
+body:has(#v8:checked) .voice-card-inner .vf-4,
+body:has(#v9:checked) .voice-card-inner .vf-4,
+body:has(#v10:checked) .voice-card-inner .vf-4,
+body:has(#v11:checked) .voice-card-inner .vf-4,
+body:has(#v12:checked) .voice-card-inner .vf-4,
+body:has(#v13:checked) .voice-card-inner .vf-4,
+body:has(#v14:checked) .voice-card-inner .vf-4,
+body:has(#v15:checked) .voice-card-inner .vf-4,
+body:has(#v16:checked) .voice-card-inner .vf-4,
+body:has(#vEnded:checked) .voice-card-inner .vf-4 { color: #1A5A96; border-color: #1A5A96; }
+body:has(#v5:checked) .voice-card-inner .vf-5,
+body:has(#v6:checked) .voice-card-inner .vf-5,
+body:has(#v7:checked) .voice-card-inner .vf-5,
+body:has(#v8:checked) .voice-card-inner .vf-5,
+body:has(#v9:checked) .voice-card-inner .vf-5,
+body:has(#v10:checked) .voice-card-inner .vf-5,
+body:has(#v11:checked) .voice-card-inner .vf-5,
+body:has(#v12:checked) .voice-card-inner .vf-5,
+body:has(#v13:checked) .voice-card-inner .vf-5,
+body:has(#v14:checked) .voice-card-inner .vf-5,
+body:has(#v15:checked) .voice-card-inner .vf-5,
+body:has(#v16:checked) .voice-card-inner .vf-5,
+body:has(#vEnded:checked) .voice-card-inner .vf-5 { color: #1A5A96; border-color: #1A5A96; }
+body:has(#v6:checked) .voice-card-inner .vf-6,
+body:has(#v7:checked) .voice-card-inner .vf-6,
+body:has(#v8:checked) .voice-card-inner .vf-6,
+body:has(#v9:checked) .voice-card-inner .vf-6,
+body:has(#v10:checked) .voice-card-inner .vf-6,
+body:has(#v11:checked) .voice-card-inner .vf-6,
+body:has(#v12:checked) .voice-card-inner .vf-6,
+body:has(#v13:checked) .voice-card-inner .vf-6,
+body:has(#v14:checked) .voice-card-inner .vf-6,
+body:has(#v15:checked) .voice-card-inner .vf-6,
+body:has(#v16:checked) .voice-card-inner .vf-6,
+body:has(#vEnded:checked) .voice-card-inner .vf-6 { color: #1A5A96; border-color: #1A5A96; }
+body:has(#v7:checked) .voice-card-inner .vf-7,
+body:has(#v8:checked) .voice-card-inner .vf-7,
+body:has(#v9:checked) .voice-card-inner .vf-7,
+body:has(#v10:checked) .voice-card-inner .vf-7,
+body:has(#v11:checked) .voice-card-inner .vf-7,
+body:has(#v12:checked) .voice-card-inner .vf-7,
+body:has(#v13:checked) .voice-card-inner .vf-7,
+body:has(#v14:checked) .voice-card-inner .vf-7,
+body:has(#v15:checked) .voice-card-inner .vf-7,
+body:has(#v16:checked) .voice-card-inner .vf-7,
+body:has(#vEnded:checked) .voice-card-inner .vf-7 { color: #1A5A96; border-color: #1A5A96; }
+body:has(#v8:checked) .voice-card-inner .vf-8,
+body:has(#v9:checked) .voice-card-inner .vf-8,
+body:has(#v10:checked) .voice-card-inner .vf-8,
+body:has(#v11:checked) .voice-card-inner .vf-8,
+body:has(#v12:checked) .voice-card-inner .vf-8,
+body:has(#v13:checked) .voice-card-inner .vf-8,
+body:has(#v14:checked) .voice-card-inner .vf-8,
+body:has(#v15:checked) .voice-card-inner .vf-8,
+body:has(#v16:checked) .voice-card-inner .vf-8,
+body:has(#vEnded:checked) .voice-card-inner .vf-8 { color: #1A5A96; border-color: #1A5A96; }
+body:has(#v9:checked) .voice-card-inner .vf-9,
+body:has(#v10:checked) .voice-card-inner .vf-9,
+body:has(#v11:checked) .voice-card-inner .vf-9,
+body:has(#v12:checked) .voice-card-inner .vf-9,
+body:has(#v13:checked) .voice-card-inner .vf-9,
+body:has(#v14:checked) .voice-card-inner .vf-9,
+body:has(#v15:checked) .voice-card-inner .vf-9,
+body:has(#v16:checked) .voice-card-inner .vf-9,
+body:has(#vEnded:checked) .voice-card-inner .vf-9 { color: #1A5A96; border-color: #1A5A96; }
+body:has(#v10:checked) .voice-card-inner .vf-10,
+body:has(#v11:checked) .voice-card-inner .vf-10,
+body:has(#v12:checked) .voice-card-inner .vf-10,
+body:has(#v13:checked) .voice-card-inner .vf-10,
+body:has(#v14:checked) .voice-card-inner .vf-10,
+body:has(#v15:checked) .voice-card-inner .vf-10,
+body:has(#v16:checked) .voice-card-inner .vf-10,
+body:has(#vEnded:checked) .voice-card-inner .vf-10 { color: #1A5A96; border-color: #1A5A96; }
+body:has(#v11:checked) .voice-card-inner .vf-11,
+body:has(#v12:checked) .voice-card-inner .vf-11,
+body:has(#v13:checked) .voice-card-inner .vf-11,
+body:has(#v14:checked) .voice-card-inner .vf-11,
+body:has(#v15:checked) .voice-card-inner .vf-11,
+body:has(#v16:checked) .voice-card-inner .vf-11,
+body:has(#vEnded:checked) .voice-card-inner .vf-11 { color: #1A5A96; border-color: #1A5A96; }
+body:has(#v12:checked) .voice-card-inner .vf-12,
+body:has(#v13:checked) .voice-card-inner .vf-12,
+body:has(#v14:checked) .voice-card-inner .vf-12,
+body:has(#v15:checked) .voice-card-inner .vf-12,
+body:has(#v16:checked) .voice-card-inner .vf-12,
+body:has(#vEnded:checked) .voice-card-inner .vf-12 { color: #1A5A96; border-color: #1A5A96; }
+body:has(#v13:checked) .voice-card-inner .vf-13,
+body:has(#v14:checked) .voice-card-inner .vf-13,
+body:has(#v15:checked) .voice-card-inner .vf-13,
+body:has(#v16:checked) .voice-card-inner .vf-13,
+body:has(#vEnded:checked) .voice-card-inner .vf-13 { color: #1A5A96; border-color: #1A5A96; }
+body:has(#v14:checked) .voice-card-inner .vf-14,
+body:has(#v15:checked) .voice-card-inner .vf-14,
+body:has(#v16:checked) .voice-card-inner .vf-14,
+body:has(#vEnded:checked) .voice-card-inner .vf-14 { color: #1A5A96; border-color: #1A5A96; }
+body:has(#v15:checked) .voice-card-inner .vf-15,
+body:has(#v16:checked) .voice-card-inner .vf-15,
+body:has(#vEnded:checked) .voice-card-inner .vf-15 { color: #1A5A96; border-color: #1A5A96; }
+body:has(#v16:checked) .voice-card-inner .vf-16,
+body:has(#vEnded:checked) .voice-card-inner .vf-16 { color: #1A5A96; border-color: #1A5A96; }
+
+.voice-step-nav { display: flex; align-items: center; gap: 8px; padding-top: 4px; flex-wrap: wrap; }
+.voice-step-btn { display: none; align-items: center; justify-content: center; background: #FFFFFF; border: 1px solid #CFE6F7; color: #1A5A96; font-size: 12.5px; font-weight: 600; padding: 9px 12px; border-radius: 7px; cursor: pointer; font-family: inherit; white-space: nowrap; flex: 1; min-width: 0; text-decoration: none; }
+.voice-step-btn:hover { background: #EAF4FC; }
+.voice-step-next { margin-left: 0; background: #1A5A96; color: #FFFFFF; border-color: #1A5A96; }
+.voice-step-next:hover { background: #134772; }
+.voice-step-label { display: none; font-size: 11.5px; color: #5B6670; font-weight: 600; flex: 1 0 100%; order: -1; text-align: center; }
+body:has(#v1:checked) .voice-card-inner .voice-step-back-1,
+body:has(#v1:checked) .voice-card-inner .voice-step-label-1,
+body:has(#v1:checked) .voice-card-inner .voice-step-next-1 { display: inline-flex; }
+body:has(#v2:checked) .voice-card-inner .voice-step-back-2,
+body:has(#v2:checked) .voice-card-inner .voice-step-label-2,
+body:has(#v2:checked) .voice-card-inner .voice-step-next-2 { display: inline-flex; }
+body:has(#v3:checked) .voice-card-inner .voice-step-back-3,
+body:has(#v3:checked) .voice-card-inner .voice-step-label-3,
+body:has(#v3:checked) .voice-card-inner .voice-step-next-3 { display: inline-flex; }
+body:has(#v4:checked) .voice-card-inner .voice-step-back-4,
+body:has(#v4:checked) .voice-card-inner .voice-step-label-4,
+body:has(#v4:checked) .voice-card-inner .voice-step-next-4 { display: inline-flex; }
+body:has(#v5:checked) .voice-card-inner .voice-step-back-5,
+body:has(#v5:checked) .voice-card-inner .voice-step-label-5,
+body:has(#v5:checked) .voice-card-inner .voice-step-next-5 { display: inline-flex; }
+body:has(#v6:checked) .voice-card-inner .voice-step-back-6,
+body:has(#v6:checked) .voice-card-inner .voice-step-label-6,
+body:has(#v6:checked) .voice-card-inner .voice-step-next-6 { display: inline-flex; }
+body:has(#v7:checked) .voice-card-inner .voice-step-back-7,
+body:has(#v7:checked) .voice-card-inner .voice-step-label-7,
+body:has(#v7:checked) .voice-card-inner .voice-step-next-7 { display: inline-flex; }
+body:has(#v8:checked) .voice-card-inner .voice-step-back-8,
+body:has(#v8:checked) .voice-card-inner .voice-step-label-8,
+body:has(#v8:checked) .voice-card-inner .voice-step-next-8 { display: inline-flex; }
+body:has(#v9:checked) .voice-card-inner .voice-step-back-9,
+body:has(#v9:checked) .voice-card-inner .voice-step-label-9,
+body:has(#v9:checked) .voice-card-inner .voice-step-next-9 { display: inline-flex; }
+body:has(#v10:checked) .voice-card-inner .voice-step-back-10,
+body:has(#v10:checked) .voice-card-inner .voice-step-label-10,
+body:has(#v10:checked) .voice-card-inner .voice-step-next-10 { display: inline-flex; }
+body:has(#v11:checked) .voice-card-inner .voice-step-back-11,
+body:has(#v11:checked) .voice-card-inner .voice-step-label-11,
+body:has(#v11:checked) .voice-card-inner .voice-step-next-11 { display: inline-flex; }
+body:has(#v12:checked) .voice-card-inner .voice-step-back-12,
+body:has(#v12:checked) .voice-card-inner .voice-step-label-12,
+body:has(#v12:checked) .voice-card-inner .voice-step-next-12 { display: inline-flex; }
+body:has(#v13:checked) .voice-card-inner .voice-step-back-13,
+body:has(#v13:checked) .voice-card-inner .voice-step-label-13,
+body:has(#v13:checked) .voice-card-inner .voice-step-next-13 { display: inline-flex; }
+body:has(#v14:checked) .voice-card-inner .voice-step-back-14,
+body:has(#v14:checked) .voice-card-inner .voice-step-label-14,
+body:has(#v14:checked) .voice-card-inner .voice-step-next-14 { display: inline-flex; }
+body:has(#v15:checked) .voice-card-inner .voice-step-back-15,
+body:has(#v15:checked) .voice-card-inner .voice-step-label-15,
+body:has(#v15:checked) .voice-card-inner .voice-step-next-15 { display: inline-flex; }
+body:has(#v16:checked) .voice-card-inner .voice-step-back-16,
+body:has(#v16:checked) .voice-card-inner .voice-step-label-16,
+body:has(#v16:checked) .voice-card-inner .voice-step-next-16 { display: inline-flex; }
+
+.voice-summary-head { display: flex; align-items: center; gap: 14px; }
+.voice-summary-check { width: 36px; height: 36px; border-radius: 50%; background: #DCEFE7; color: #0F6B53; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.voice-summary-check svg { width: 16px; height: 16px; }
+.voice-summary-section { margin: 0 0 10px; font-size: 11.5px; font-weight: 700; color: #5B6670; text-transform: uppercase; letter-spacing: .03em; }
+.voice-notes-list { display: flex; flex-direction: column; gap: 8px; background: #FFFFFF; border: 1px solid #D9E8F3; border-radius: 10px; padding: 12px 13px; }
+.voice-notes-list p { margin: 0; font-size: 12px; color: #2B2B2B; line-height: 1.5; padding-left: 14px; position: relative; }
+.voice-notes-list p::before { content: ""; position: absolute; left: 0; top: 6px; width: 5px; height: 5px; border-radius: 50%; background: #1A5A96; }
+.voice-summary-section-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 10px; }
+.voice-summary-section-row .voice-summary-section { margin: 0; }
+.voice-ai-tag { display: inline-flex; align-items: center; gap: 4px; font-size: 10.5px; font-weight: 700; color: #1A5A96; background: #E3F0FC; padding: 3px 9px; border-radius: 999px; white-space: nowrap; flex-shrink: 0; }
+.voice-summary-note { text-transform: none; font-weight: 500; letter-spacing: normal; color: #9A9A9E; }
+.voice-call-summary { background: linear-gradient(135deg, #F5FAFD, #FFFFFF); border: 1px solid #D9E8F3; border-radius: 10px; padding: 15px 16px; }
+.voice-call-summary p { margin: 0; font-size: 13.5px; line-height: 1.65; color: #2B2B2B; }
+.voice-nextsteps-list { display: flex; flex-direction: column; gap: 8px; }
+.voice-nextstep-item { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; background: #FFF7EC; border: 1px solid #F3DCA8; border-radius: 10px; padding: 10px 13px 10px 34px; position: relative; }
+.voice-nextstep-item::before { content: "!"; position: absolute; left: 10px; top: 11px; width: 14px; height: 14px; border-radius: 50%; background: #D98B2B; color: #FFFFFF; font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+.voice-nextstep-item p { margin: 0; font-size: 12px; color: #6B4E12; line-height: 1.5; font-weight: 500; }
+.voice-cg-toggle-pill { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 999px; border: 1px solid #CFE6F7; color: #1A5A96; cursor: pointer; background: #FFFFFF; white-space: nowrap; }
+.voice-cg-toggle:checked + .voice-cg-toggle-pill { background: #1A5A96; color: #FFFFFF; border-color: #1A5A96; }
+.voice-newcall-btn { align-self: stretch; display: inline-flex; align-items: center; justify-content: center; background: #FFFFFF; border: 1px solid #CFE6F7; color: #1A5A96; font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 8px; cursor: pointer; font-family: inherit; text-decoration: none; }
+.voice-newcall-btn:hover { background: #EAF4FC; }
+
+.ai-fill-badge { display: none; font-size: 10.5px; font-weight: 700; color: #1A5A96; background: #E3F0FC; padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
+.ai-fill-wrap { position: relative; }
+.ai-fill-wrap .field-input { padding-right: 38px; }
+.ai-fill-pencil { display: none; position: absolute; top: 18px; right: 14px; width: 15px; height: 15px; color: #8A8A8E; pointer-events: none; }
+select.field-input ~ .ai-fill-pencil { right: 34px; }
+.ai-fill-mask { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 14px; border: 1px solid #D4D4D6; border-radius: 7px; background: #FEFEFE; font-size: 14px; font-style: italic; color: #A4A4A8; pointer-events: none; }
+
+body:not(:has(#formCleared:checked)):has(#v1:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v2:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v3:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v4:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v5:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldFirstName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldFirstName .ai-fill-mask { display: none; }
+
+body:not(:has(#formCleared:checked)):has(#v1:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v2:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v3:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v4:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v5:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldFirstName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldFirstName .ai-fill-pencil { display: flex; }
+body:has(#v1:checked) #fieldFirstName .field-input { outline: 2px solid #1A5A96; outline-offset: 2px; background: #EFF7FC; }
+body:has(#v2:checked) #fieldFirstName .field-input,
+body:has(#v3:checked) #fieldFirstName .field-input,
+body:has(#v4:checked) #fieldFirstName .field-input,
+body:has(#v5:checked) #fieldFirstName .field-input,
+body:has(#v6:checked) #fieldFirstName .field-input,
+body:has(#v7:checked) #fieldFirstName .field-input,
+body:has(#v8:checked) #fieldFirstName .field-input,
+body:has(#v9:checked) #fieldFirstName .field-input,
+body:has(#v10:checked) #fieldFirstName .field-input,
+body:has(#v11:checked) #fieldFirstName .field-input,
+body:has(#v12:checked) #fieldFirstName .field-input,
+body:has(#v13:checked) #fieldFirstName .field-input,
+body:has(#v14:checked) #fieldFirstName .field-input,
+body:has(#v15:checked) #fieldFirstName .field-input,
+body:has(#v16:checked) #fieldFirstName .field-input,
+body:has(#vEnded:checked) #fieldFirstName .field-input { background: #FEFEFE; }
+body:not(:has(#formCleared:checked)):has(#v1:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#v2:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#v3:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#v4:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#v5:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #badgeFirstName,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #badgeFirstName { display: inline-flex; }
+
+body:not(:has(#formCleared:checked)):has(#v1:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v2:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v3:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v4:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v5:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldLastName .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldLastName .ai-fill-mask { display: none; }
+
+body:not(:has(#formCleared:checked)):has(#v1:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v2:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v3:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v4:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v5:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldLastName .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldLastName .ai-fill-pencil { display: flex; }
+body:has(#v1:checked) #fieldLastName .field-input { outline: 2px solid #1A5A96; outline-offset: 2px; background: #EFF7FC; }
+body:has(#v2:checked) #fieldLastName .field-input,
+body:has(#v3:checked) #fieldLastName .field-input,
+body:has(#v4:checked) #fieldLastName .field-input,
+body:has(#v5:checked) #fieldLastName .field-input,
+body:has(#v6:checked) #fieldLastName .field-input,
+body:has(#v7:checked) #fieldLastName .field-input,
+body:has(#v8:checked) #fieldLastName .field-input,
+body:has(#v9:checked) #fieldLastName .field-input,
+body:has(#v10:checked) #fieldLastName .field-input,
+body:has(#v11:checked) #fieldLastName .field-input,
+body:has(#v12:checked) #fieldLastName .field-input,
+body:has(#v13:checked) #fieldLastName .field-input,
+body:has(#v14:checked) #fieldLastName .field-input,
+body:has(#v15:checked) #fieldLastName .field-input,
+body:has(#v16:checked) #fieldLastName .field-input,
+body:has(#vEnded:checked) #fieldLastName .field-input { background: #FEFEFE; }
+body:not(:has(#formCleared:checked)):has(#v1:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#v2:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#v3:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#v4:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#v5:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #badgeLastName,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #badgeLastName { display: inline-flex; }
+
+body:not(:has(#formCleared:checked)):has(#v2:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v3:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v4:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v5:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldDob .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldDob .ai-fill-mask { display: none; }
+
+body:not(:has(#formCleared:checked)):has(#v2:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v3:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v4:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v5:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldDob .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldDob .ai-fill-pencil { display: flex; }
+body:has(#v2:checked) #fieldDob .field-input { outline: 2px solid #1A5A96; outline-offset: 2px; background: #EFF7FC; }
+body:has(#v3:checked) #fieldDob .field-input,
+body:has(#v4:checked) #fieldDob .field-input,
+body:has(#v5:checked) #fieldDob .field-input,
+body:has(#v6:checked) #fieldDob .field-input,
+body:has(#v7:checked) #fieldDob .field-input,
+body:has(#v8:checked) #fieldDob .field-input,
+body:has(#v9:checked) #fieldDob .field-input,
+body:has(#v10:checked) #fieldDob .field-input,
+body:has(#v11:checked) #fieldDob .field-input,
+body:has(#v12:checked) #fieldDob .field-input,
+body:has(#v13:checked) #fieldDob .field-input,
+body:has(#v14:checked) #fieldDob .field-input,
+body:has(#v15:checked) #fieldDob .field-input,
+body:has(#v16:checked) #fieldDob .field-input,
+body:has(#vEnded:checked) #fieldDob .field-input { background: #FEFEFE; }
+body:not(:has(#formCleared:checked)):has(#v2:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#v3:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#v4:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#v5:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #badgeDob,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #badgeDob { display: inline-flex; }
+
+body:not(:has(#formCleared:checked)):has(#v3:checked) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v4:checked) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v5:checked) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldGender .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldGender .ai-fill-mask { display: none; }
+
+body:not(:has(#formCleared:checked)):has(#v3:checked) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v4:checked) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v5:checked) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldGender .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldGender .ai-fill-pencil { display: flex; }
+body:has(#v3:checked) #fieldGender .field-input { outline: 2px solid #1A5A96; outline-offset: 2px; background: #EFF7FC; }
+body:has(#v4:checked) #fieldGender .field-input,
+body:has(#v5:checked) #fieldGender .field-input,
+body:has(#v6:checked) #fieldGender .field-input,
+body:has(#v7:checked) #fieldGender .field-input,
+body:has(#v8:checked) #fieldGender .field-input,
+body:has(#v9:checked) #fieldGender .field-input,
+body:has(#v10:checked) #fieldGender .field-input,
+body:has(#v11:checked) #fieldGender .field-input,
+body:has(#v12:checked) #fieldGender .field-input,
+body:has(#v13:checked) #fieldGender .field-input,
+body:has(#v14:checked) #fieldGender .field-input,
+body:has(#v15:checked) #fieldGender .field-input,
+body:has(#v16:checked) #fieldGender .field-input,
+body:has(#vEnded:checked) #fieldGender .field-input { background: #FEFEFE; }
+body:not(:has(#formCleared:checked)):has(#v3:checked) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#v4:checked) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#v5:checked) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #badgeGender,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #badgeGender { display: inline-flex; }
+
+body:not(:has(#formCleared:checked)):has(#v4:checked) #fieldCareFor .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v5:checked) #fieldCareFor .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #fieldCareFor .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #fieldCareFor .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #fieldCareFor .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #fieldCareFor .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldCareFor .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldCareFor .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldCareFor .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldCareFor .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldCareFor .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldCareFor .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldCareFor .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldCareFor .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldCareFor .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldCareFor .ai-fill-mask { display: none; }
+
+body:not(:has(#formCleared:checked)):has(#v4:checked) #fieldCareFor .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v5:checked) #fieldCareFor .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #fieldCareFor .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #fieldCareFor .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #fieldCareFor .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #fieldCareFor .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldCareFor .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldCareFor .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldCareFor .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldCareFor .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldCareFor .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldCareFor .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldCareFor .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldCareFor .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldCareFor .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldCareFor .ai-fill-pencil { display: flex; }
+body:has(#v4:checked) #fieldCareFor .field-input { outline: 2px solid #1A5A96; outline-offset: 2px; background: #EFF7FC; }
+body:has(#v5:checked) #fieldCareFor .field-input,
+body:has(#v6:checked) #fieldCareFor .field-input,
+body:has(#v7:checked) #fieldCareFor .field-input,
+body:has(#v8:checked) #fieldCareFor .field-input,
+body:has(#v9:checked) #fieldCareFor .field-input,
+body:has(#v10:checked) #fieldCareFor .field-input,
+body:has(#v11:checked) #fieldCareFor .field-input,
+body:has(#v12:checked) #fieldCareFor .field-input,
+body:has(#v13:checked) #fieldCareFor .field-input,
+body:has(#v14:checked) #fieldCareFor .field-input,
+body:has(#v15:checked) #fieldCareFor .field-input,
+body:has(#v16:checked) #fieldCareFor .field-input,
+body:has(#vEnded:checked) #fieldCareFor .field-input { background: #FEFEFE; }
+body:not(:has(#formCleared:checked)):has(#v4:checked) #badgeCareFor,
+body:not(:has(#formCleared:checked)):has(#v5:checked) #badgeCareFor,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #badgeCareFor,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #badgeCareFor,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #badgeCareFor,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #badgeCareFor,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #badgeCareFor,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #badgeCareFor,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #badgeCareFor,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #badgeCareFor,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #badgeCareFor,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #badgeCareFor,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #badgeCareFor,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #badgeCareFor,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #badgeCareFor,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #badgeCareFor { display: inline-flex; }
+
+body:not(:has(#formCleared:checked)):has(#v5:checked) #fieldPhone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #fieldPhone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #fieldPhone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #fieldPhone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #fieldPhone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldPhone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldPhone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldPhone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldPhone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldPhone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldPhone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldPhone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldPhone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldPhone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldPhone .ai-fill-mask { display: none; }
+
+body:not(:has(#formCleared:checked)):has(#v5:checked) #fieldPhone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #fieldPhone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #fieldPhone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #fieldPhone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #fieldPhone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldPhone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldPhone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldPhone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldPhone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldPhone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldPhone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldPhone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldPhone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldPhone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldPhone .ai-fill-pencil { display: flex; }
+body:has(#v5:checked) #fieldPhone .field-input { outline: 2px solid #1A5A96; outline-offset: 2px; background: #EFF7FC; }
+body:has(#v6:checked) #fieldPhone .field-input,
+body:has(#v7:checked) #fieldPhone .field-input,
+body:has(#v8:checked) #fieldPhone .field-input,
+body:has(#v9:checked) #fieldPhone .field-input,
+body:has(#v10:checked) #fieldPhone .field-input,
+body:has(#v11:checked) #fieldPhone .field-input,
+body:has(#v12:checked) #fieldPhone .field-input,
+body:has(#v13:checked) #fieldPhone .field-input,
+body:has(#v14:checked) #fieldPhone .field-input,
+body:has(#v15:checked) #fieldPhone .field-input,
+body:has(#v16:checked) #fieldPhone .field-input,
+body:has(#vEnded:checked) #fieldPhone .field-input { background: #FEFEFE; }
+body:not(:has(#formCleared:checked)):has(#v5:checked) #badgePhone,
+body:not(:has(#formCleared:checked)):has(#v6:checked) #badgePhone,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #badgePhone,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #badgePhone,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #badgePhone,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #badgePhone,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #badgePhone,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #badgePhone,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #badgePhone,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #badgePhone,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #badgePhone,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #badgePhone,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #badgePhone,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #badgePhone,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #badgePhone { display: inline-flex; }
+
+body:not(:has(#formCleared:checked)):has(#v6:checked) #fieldAddress .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #fieldAddress .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #fieldAddress .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #fieldAddress .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldAddress .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldAddress .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldAddress .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldAddress .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldAddress .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldAddress .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldAddress .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldAddress .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldAddress .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldAddress .ai-fill-mask { display: none; }
+
+body:not(:has(#formCleared:checked)):has(#v6:checked) #fieldAddress .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #fieldAddress .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #fieldAddress .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #fieldAddress .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldAddress .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldAddress .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldAddress .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldAddress .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldAddress .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldAddress .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldAddress .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldAddress .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldAddress .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldAddress .ai-fill-pencil { display: flex; }
+body:has(#v6:checked) #fieldAddress .field-input { outline: 2px solid #1A5A96; outline-offset: 2px; background: #EFF7FC; }
+body:has(#v7:checked) #fieldAddress .field-input,
+body:has(#v8:checked) #fieldAddress .field-input,
+body:has(#v9:checked) #fieldAddress .field-input,
+body:has(#v10:checked) #fieldAddress .field-input,
+body:has(#v11:checked) #fieldAddress .field-input,
+body:has(#v12:checked) #fieldAddress .field-input,
+body:has(#v13:checked) #fieldAddress .field-input,
+body:has(#v14:checked) #fieldAddress .field-input,
+body:has(#v15:checked) #fieldAddress .field-input,
+body:has(#v16:checked) #fieldAddress .field-input,
+body:has(#vEnded:checked) #fieldAddress .field-input { background: #FEFEFE; }
+body:not(:has(#formCleared:checked)):has(#v6:checked) #badgeAddress,
+body:not(:has(#formCleared:checked)):has(#v7:checked) #badgeAddress,
+body:not(:has(#formCleared:checked)):has(#v8:checked) #badgeAddress,
+body:not(:has(#formCleared:checked)):has(#v9:checked) #badgeAddress,
+body:not(:has(#formCleared:checked)):has(#v10:checked) #badgeAddress,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #badgeAddress,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #badgeAddress,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #badgeAddress,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #badgeAddress,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #badgeAddress,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #badgeAddress,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #badgeAddress,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #badgeAddress,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #badgeAddress { display: inline-flex; }
+
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldInsurance .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldInsurance .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldInsurance .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldInsurance .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldInsurance .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldInsurance .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldInsurance .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldInsurance .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldInsurance .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldInsurance .ai-fill-mask { display: none; }
+
+body:not(:has(#formCleared:checked)):has(#v10:checked) #fieldInsurance .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #fieldInsurance .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #fieldInsurance .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #fieldInsurance .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldInsurance .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldInsurance .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldInsurance .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldInsurance .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldInsurance .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldInsurance .ai-fill-pencil { display: flex; }
+body:has(#v10:checked) #fieldInsurance .field-input { outline: 2px solid #1A5A96; outline-offset: 2px; background: #EFF7FC; }
+body:has(#v11:checked) #fieldInsurance .field-input,
+body:has(#v12:checked) #fieldInsurance .field-input,
+body:has(#v13:checked) #fieldInsurance .field-input,
+body:has(#v14:checked) #fieldInsurance .field-input,
+body:has(#v15:checked) #fieldInsurance .field-input,
+body:has(#v16:checked) #fieldInsurance .field-input,
+body:has(#vEnded:checked) #fieldInsurance .field-input { background: #FEFEFE; }
+body:not(:has(#formCleared:checked)):has(#v10:checked) #badgeInsurance,
+body:not(:has(#formCleared:checked)):has(#v11:checked) #badgeInsurance,
+body:not(:has(#formCleared:checked)):has(#v12:checked) #badgeInsurance,
+body:not(:has(#formCleared:checked)):has(#v13:checked) #badgeInsurance,
+body:not(:has(#formCleared:checked)):has(#v14:checked) #badgeInsurance,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #badgeInsurance,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #badgeInsurance,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #badgeInsurance,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #badgeInsurance,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #badgeInsurance { display: inline-flex; }
+
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldC1Type .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldC1Type .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldC1Type .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldC1Type .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldC1Type .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldC1Type .ai-fill-mask { display: none; }
+
+body:not(:has(#formCleared:checked)):has(#v14:checked) #fieldC1Type .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldC1Type .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldC1Type .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldC1Type .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldC1Type .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldC1Type .ai-fill-pencil { display: flex; }
+body:has(#v14:checked) #fieldC1Type .field-input { outline: 2px solid #1A5A96; outline-offset: 2px; background: #EFF7FC; }
+body:has(#v15:checked) #fieldC1Type .field-input,
+body:has(#v16:checked) #fieldC1Type .field-input,
+body:has(#vEnded:checked) #fieldC1Type .field-input { background: #FEFEFE; }
+body:not(:has(#formCleared:checked)):has(#v14:checked) #badgeC1Type,
+body:not(:has(#formCleared:checked)):has(#v15:checked) #badgeC1Type,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #badgeC1Type,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #badgeC1Type,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #badgeC1Type,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #badgeC1Type { display: inline-flex; }
+
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldC1First .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldC1First .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldC1First .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldC1First .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldC1First .ai-fill-mask { display: none; }
+
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldC1First .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldC1First .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldC1First .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldC1First .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldC1First .ai-fill-pencil { display: flex; }
+body:has(#v15:checked) #fieldC1First .field-input { outline: 2px solid #1A5A96; outline-offset: 2px; background: #EFF7FC; }
+body:has(#v16:checked) #fieldC1First .field-input,
+body:has(#vEnded:checked) #fieldC1First .field-input { background: #FEFEFE; }
+body:not(:has(#formCleared:checked)):has(#v15:checked) #badgeC1First,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #badgeC1First,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #badgeC1First,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #badgeC1First,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #badgeC1First { display: inline-flex; }
+
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldC1Last .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldC1Last .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldC1Last .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldC1Last .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldC1Last .ai-fill-mask { display: none; }
+
+body:not(:has(#formCleared:checked)):has(#v15:checked) #fieldC1Last .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldC1Last .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldC1Last .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldC1Last .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldC1Last .ai-fill-pencil { display: flex; }
+body:has(#v15:checked) #fieldC1Last .field-input { outline: 2px solid #1A5A96; outline-offset: 2px; background: #EFF7FC; }
+body:has(#v16:checked) #fieldC1Last .field-input,
+body:has(#vEnded:checked) #fieldC1Last .field-input { background: #FEFEFE; }
+body:not(:has(#formCleared:checked)):has(#v15:checked) #badgeC1Last,
+body:not(:has(#formCleared:checked)):has(#v16:checked) #badgeC1Last,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #badgeC1Last,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #badgeC1Last,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #badgeC1Last { display: inline-flex; }
+
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldC1Phone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldC1Phone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldC1Phone .ai-fill-mask,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldC1Phone .ai-fill-mask { display: none; }
+
+body:not(:has(#formCleared:checked)):has(#v16:checked) #fieldC1Phone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #fieldC1Phone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #fieldC1Phone .ai-fill-pencil,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #fieldC1Phone .ai-fill-pencil { display: flex; }
+body:has(#v16:checked) #fieldC1Phone .field-input { outline: 2px solid #1A5A96; outline-offset: 2px; background: #EFF7FC; }
+body:has(#vEnded:checked) #fieldC1Phone .field-input { background: #FEFEFE; }
+body:not(:has(#formCleared:checked)):has(#v16:checked) #badgeC1Phone,
+body:not(:has(#formCleared:checked)):has(#vEnded:checked) #badgeC1Phone,
+body:not(:has(#formCleared:checked)):has(#ocrUpload:valid):not(:has(#ocrRemoved:checked)) #badgeC1Phone,
+body:not(:has(#formCleared:checked)):has(#eligCheckToggle:checked):has(#eligDemoFound:checked) #badgeC1Phone { display: inline-flex; }
+
+body:has(#v7:checked) #checkBathingItem .ai-fill-check-mask,
+body:has(#v8:checked) #checkBathingItem .ai-fill-check-mask,
+body:has(#v9:checked) #checkBathingItem .ai-fill-check-mask,
+body:has(#v10:checked) #checkBathingItem .ai-fill-check-mask,
+body:has(#v11:checked) #checkBathingItem .ai-fill-check-mask,
+body:has(#v12:checked) #checkBathingItem .ai-fill-check-mask,
+body:has(#v13:checked) #checkBathingItem .ai-fill-check-mask,
+body:has(#v14:checked) #checkBathingItem .ai-fill-check-mask,
+body:has(#v15:checked) #checkBathingItem .ai-fill-check-mask,
+body:has(#v16:checked) #checkBathingItem .ai-fill-check-mask,
+body:has(#vEnded:checked) #checkBathingItem .ai-fill-check-mask,
+body:has(#v8:checked) #checkMobilityItem .ai-fill-check-mask,
+body:has(#v9:checked) #checkMobilityItem .ai-fill-check-mask,
+body:has(#v10:checked) #checkMobilityItem .ai-fill-check-mask,
+body:has(#v11:checked) #checkMobilityItem .ai-fill-check-mask,
+body:has(#v12:checked) #checkMobilityItem .ai-fill-check-mask,
+body:has(#v13:checked) #checkMobilityItem .ai-fill-check-mask,
+body:has(#v14:checked) #checkMobilityItem .ai-fill-check-mask,
+body:has(#v15:checked) #checkMobilityItem .ai-fill-check-mask,
+body:has(#v16:checked) #checkMobilityItem .ai-fill-check-mask,
+body:has(#vEnded:checked) #checkMobilityItem .ai-fill-check-mask,
+body:has(#v11:checked) #fieldOvernight .ai-fill-check-mask,
+body:has(#v12:checked) #fieldOvernight .ai-fill-check-mask,
+body:has(#v13:checked) #fieldOvernight .ai-fill-check-mask,
+body:has(#v14:checked) #fieldOvernight .ai-fill-check-mask,
+body:has(#v15:checked) #fieldOvernight .ai-fill-check-mask,
+body:has(#v16:checked) #fieldOvernight .ai-fill-check-mask,
+body:has(#vEnded:checked) #fieldOvernight .ai-fill-check-mask,
+body:has(#v13:checked) #fieldByoc .ai-fill-check-mask,
+body:has(#v14:checked) #fieldByoc .ai-fill-check-mask,
+body:has(#v15:checked) #fieldByoc .ai-fill-check-mask,
+body:has(#v16:checked) #fieldByoc .ai-fill-check-mask,
+body:has(#vEnded:checked) #fieldByoc .ai-fill-check-mask,
+body:has(#v12:checked) #fieldSchedule .ai-fill-check-mask,
+body:has(#v13:checked) #fieldSchedule .ai-fill-check-mask,
+body:has(#v14:checked) #fieldSchedule .ai-fill-check-mask,
+body:has(#v15:checked) #fieldSchedule .ai-fill-check-mask,
+body:has(#v16:checked) #fieldSchedule .ai-fill-check-mask,
+body:has(#vEnded:checked) #fieldSchedule .ai-fill-check-mask { display: none; }
+
+body:has(#v7:checked) #checkBathingItem,
+body:has(#v8:checked) #checkBathingItem,
+body:has(#v9:checked) #checkBathingItem,
+body:has(#v10:checked) #checkBathingItem,
+body:has(#v11:checked) #checkBathingItem,
+body:has(#v12:checked) #checkBathingItem,
+body:has(#v13:checked) #checkBathingItem,
+body:has(#v14:checked) #checkBathingItem,
+body:has(#v15:checked) #checkBathingItem,
+body:has(#v16:checked) #checkBathingItem,
+body:has(#vEnded:checked) #checkBathingItem { box-shadow: 0 0 0 2px #1A5A96; background: #EFF7FC; }
+body:has(#v7:checked) #checkBathingItem .ai-fill-badge,
+body:has(#v8:checked) #checkBathingItem .ai-fill-badge,
+body:has(#v9:checked) #checkBathingItem .ai-fill-badge,
+body:has(#v10:checked) #checkBathingItem .ai-fill-badge,
+body:has(#v11:checked) #checkBathingItem .ai-fill-badge,
+body:has(#v12:checked) #checkBathingItem .ai-fill-badge,
+body:has(#v13:checked) #checkBathingItem .ai-fill-badge,
+body:has(#v14:checked) #checkBathingItem .ai-fill-badge,
+body:has(#v15:checked) #checkBathingItem .ai-fill-badge,
+body:has(#v16:checked) #checkBathingItem .ai-fill-badge,
+body:has(#vEnded:checked) #checkBathingItem .ai-fill-badge { display: inline-flex; margin-left: auto; }
+
+body:has(#v8:checked) #checkMobilityItem,
+body:has(#v9:checked) #checkMobilityItem,
+body:has(#v10:checked) #checkMobilityItem,
+body:has(#v11:checked) #checkMobilityItem,
+body:has(#v12:checked) #checkMobilityItem,
+body:has(#v13:checked) #checkMobilityItem,
+body:has(#v14:checked) #checkMobilityItem,
+body:has(#v15:checked) #checkMobilityItem,
+body:has(#v16:checked) #checkMobilityItem,
+body:has(#vEnded:checked) #checkMobilityItem { box-shadow: 0 0 0 2px #1A5A96; background: #EFF7FC; }
+body:has(#v8:checked) #checkMobilityItem .ai-fill-badge,
+body:has(#v9:checked) #checkMobilityItem .ai-fill-badge,
+body:has(#v10:checked) #checkMobilityItem .ai-fill-badge,
+body:has(#v11:checked) #checkMobilityItem .ai-fill-badge,
+body:has(#v12:checked) #checkMobilityItem .ai-fill-badge,
+body:has(#v13:checked) #checkMobilityItem .ai-fill-badge,
+body:has(#v14:checked) #checkMobilityItem .ai-fill-badge,
+body:has(#v15:checked) #checkMobilityItem .ai-fill-badge,
+body:has(#v16:checked) #checkMobilityItem .ai-fill-badge,
+body:has(#vEnded:checked) #checkMobilityItem .ai-fill-badge { display: inline-flex; margin-left: auto; }
+
+body:has(#v11:checked) #fieldOvernight,
+body:has(#v12:checked) #fieldOvernight,
+body:has(#v13:checked) #fieldOvernight,
+body:has(#v14:checked) #fieldOvernight,
+body:has(#v15:checked) #fieldOvernight,
+body:has(#v16:checked) #fieldOvernight,
+body:has(#vEnded:checked) #fieldOvernight { box-shadow: 0 0 0 2px #1A5A96; background: #EFF7FC; }
+body:has(#v11:checked) #badgeOvernight,
+body:has(#v12:checked) #badgeOvernight,
+body:has(#v13:checked) #badgeOvernight,
+body:has(#v14:checked) #badgeOvernight,
+body:has(#v15:checked) #badgeOvernight,
+body:has(#v16:checked) #badgeOvernight,
+body:has(#vEnded:checked) #badgeOvernight { display: inline-flex; }
+
+body:has(#v9:checked) #fieldCaregiverGender,
+body:has(#v10:checked) #fieldCaregiverGender,
+body:has(#v11:checked) #fieldCaregiverGender,
+body:has(#v12:checked) #fieldCaregiverGender,
+body:has(#v13:checked) #fieldCaregiverGender,
+body:has(#v14:checked) #fieldCaregiverGender,
+body:has(#v15:checked) #fieldCaregiverGender,
+body:has(#v16:checked) #fieldCaregiverGender,
+body:has(#vEnded:checked) #fieldCaregiverGender { box-shadow: 0 0 0 2px #1A5A96; background: #EFF7FC; }
+body:has(#v9:checked) #badgeCaregiverGender,
+body:has(#v10:checked) #badgeCaregiverGender,
+body:has(#v11:checked) #badgeCaregiverGender,
+body:has(#v12:checked) #badgeCaregiverGender,
+body:has(#v13:checked) #badgeCaregiverGender,
+body:has(#v14:checked) #badgeCaregiverGender,
+body:has(#v15:checked) #badgeCaregiverGender,
+body:has(#v16:checked) #badgeCaregiverGender,
+body:has(#vEnded:checked) #badgeCaregiverGender { display: inline-flex; }
+
+body:has(#v12:checked) #fieldSchedule,
+body:has(#v13:checked) #fieldSchedule,
+body:has(#v14:checked) #fieldSchedule,
+body:has(#v15:checked) #fieldSchedule,
+body:has(#v16:checked) #fieldSchedule,
+body:has(#vEnded:checked) #fieldSchedule { box-shadow: 0 0 0 2px #1A5A96; background: #EFF7FC; }
+body:has(#v12:checked) #badgeSchedule,
+body:has(#v13:checked) #badgeSchedule,
+body:has(#v14:checked) #badgeSchedule,
+body:has(#v15:checked) #badgeSchedule,
+body:has(#v16:checked) #badgeSchedule,
+body:has(#vEnded:checked) #badgeSchedule { display: inline-flex; }
+
+body:has(#v13:checked) #fieldByoc,
+body:has(#v14:checked) #fieldByoc,
+body:has(#v15:checked) #fieldByoc,
+body:has(#v16:checked) #fieldByoc,
+body:has(#vEnded:checked) #fieldByoc { box-shadow: 0 0 0 2px #1A5A96; background: #EFF7FC; }
+body:has(#v13:checked) #badgeByoc,
+body:has(#v14:checked) #badgeByoc,
+body:has(#v15:checked) #badgeByoc,
+body:has(#v16:checked) #badgeByoc,
+body:has(#vEnded:checked) #badgeByoc { display: inline-flex; }
+
+body:has(#v7:checked) #catBathing .adl-category-items,
+body:has(#v8:checked) #catBathing .adl-category-items,
+body:has(#v8:checked) #catMobility .adl-category-items { max-height: 2000px; gap: 8px 16px; padding: 2px 16px 16px; }
+body:has(#v7:checked) #catBathing .adl-cat-summary .chev,
+body:has(#v8:checked) #catBathing .adl-cat-summary .chev,
+body:has(#v8:checked) #catMobility .adl-cat-summary .chev { transform: rotate(45deg); }
+
+.ai-fill-badge-missing { display: none; font-size: 10.5px; font-weight: 700; color: #8A5A00; background: #FFF1D6; padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
+body:has(#vEnded:checked) #fieldEmail { outline: 2px solid #D98B2B; outline-offset: 2px; background: #FFF7EC; border-radius: 7px; }
+body:has(#vEnded:checked) #badgeMissingEmail { display: inline-flex; }
+body:has(#vEnded:checked) #fieldMemberId { outline: 2px solid #D98B2B; outline-offset: 2px; background: #FFF7EC; border-radius: 7px; }
+body:has(#vEnded:checked) #badgeMissingMemberId { display: inline-flex; }
+body:has(#vEnded:checked) #fieldC1Email { outline: 2px solid #D98B2B; outline-offset: 2px; background: #FFF7EC; border-radius: 7px; }
+body:has(#vEnded:checked) #badgeMissingC1Email { display: inline-flex; }
+
+.contact-entry { border: 1px solid #ECECEC; border-radius: 10px; padding: 18px 20px; background: #FAFAF9; display: flex; flex-direction: column; gap: 14px; margin-bottom: 14px; }
+.contact-entry-title { font-size: 11.5px; font-weight: 700; color: #116659; text-transform: uppercase; letter-spacing: 0.03em; margin: 0; }
+.contact-entry-head { display: flex; align-items: center; justify-content: space-between; }
+.remove-contact-link { font-size: 12px; font-weight: 600; color: #9A3B3B; cursor: pointer; }
+.remove-contact-link:hover { text-decoration: underline; }
+.required-mark { color: #C0392B; margin-left: 2px; font-weight: 700; }
+
+.add-contact-btn { display: inline-flex; align-items: center; gap: 6px; background: #FFFFFF; border: 1px dashed #B9DCCB; color: #116659; font-size: 13px; font-weight: 600; padding: 10px 16px; border-radius: 8px; cursor: pointer; font-family: inherit; }
+.add-contact-btn:hover { background: #F3FAF6; }
+
+.contact-toggle { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.contact-entry-2, .contact-entry-3, .add-btn-2 { display: none; }
+#addContact2:checked ~ .add-btn-1 { display: none; }
+#addContact2:checked ~ .contact-entry-2 { display: flex; }
+#addContact2:checked ~ .add-btn-2 { display: inline-flex; }
+#addContact3:checked ~ .add-btn-2 { display: none; }
+#addContact3:checked ~ .contact-entry-3 { display: flex; }
+
+.schedule-days { display: flex; flex-direction: column; gap: 2px; border: 1px solid #D4D4D6; border-radius: 7px; padding: 6px 16px; background: #FEFEFE; }
+.schedule-day-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 10px 0; border-top: 1px solid #F0F0F0; }
+.schedule-day-row:first-child { border-top: none; }
+.day-toggle { width: 16px; height: 16px; accent-color: #116659; cursor: pointer; flex-shrink: 0; }
+.day-name { width: 92px; flex-shrink: 0; font-size: 13px; font-weight: 500; color: #2B2B2B; cursor: pointer; }
+.schedule-times { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 200px; transition: opacity .15s; }
+.schedule-times input[type="time"] { border: 1px solid #D4D4D6; border-radius: 6px; padding: 7px 10px; font-size: 13px; font-family: inherit; color: #2B2B2B; background: #FEFEFE; }
+.schedule-times input[type="time"]:focus { outline: 2px solid #116659; outline-offset: 1px; border-color: #116659; }
+.schedule-times .to { font-size: 12px; color: #9A9A9E; }
+.schedule-day-row .day-toggle:not(:checked) ~ .schedule-times { opacity: 0.35; pointer-events: none; }
+.ai-fill-day-masked { opacity: 0.35 !important; pointer-events: none !important; }
+body:has(#v12:checked) .ai-fill-day-masked,
+body:has(#v13:checked) .ai-fill-day-masked,
+body:has(#v14:checked) .ai-fill-day-masked,
+body:has(#v15:checked) .ai-fill-day-masked,
+body:has(#v16:checked) .ai-fill-day-masked,
+body:has(#vEnded:checked) .ai-fill-day-masked { opacity: 1 !important; pointer-events: auto !important; }
+.add-contact-btn svg { width: 14px; height: 14px; flex-shrink: 0; }

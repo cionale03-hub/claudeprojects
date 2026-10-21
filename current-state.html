@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CareLinx Base Referral Form — Recommended Structure</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/current-state.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="intro">
+    <h1>CareLinx Base Referral Form — Recommended Structure</h1>
+    <p>Updated against the fuller current-implementation export: 4,137 field entries across 126 live lead-acquisition programs (up from the original 62-program sample). First Name, Last Name, and Email are used by every one of the 126 programs; Care for (97%) and Phone (94%) are used by nearly all. Everything else is organized into the sections every program-level form already groups it into, with the fields used by most programs kept in the base flow and the fields only a handful of programs need pulled out into optional modules a program can switch on.</p>
+    <p>This pass also adds a visibility read on each field: the dataset now flags <code>hidden</code> per field per program, so for the first time we can see what's actually shown to the person filling out the form versus what's set automatically or by staff. Overall, <strong>25% of all 4,137 field entries are hidden</strong> — look for the <span class="badge badge-hidden">X% hidden</span> badge below on any field where that share is meaningful.</p>
+    <p>Each card below mirrors the live product's per-step layout (italic section label, bold form title, stacked labeled fields) so this reads as a walkthrough of the consolidated flow, not just a field list.</p>
+    <div class="stat-strip">
+      <div class="stat-box"><div class="stat-num">126</div><div class="stat-cap">live programs in this dataset</div></div>
+      <div class="stat-box"><div class="stat-num">4,137</div><div class="stat-cap">total field entries analyzed</div></div>
+      <div class="stat-box"><div class="stat-num">1,036</div><div class="stat-cap">entries flagged hidden (25%)</div></div>
+      <div class="stat-box"><div class="stat-num">94</div><div class="stat-cap">distinct field names in use</div></div>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><span class="badge badge-core">Core</span> in every program's base flow</div>
+      <div class="legend-item"><span class="badge badge-module">Optional module</span> program turns on as needed</div>
+      <div class="legend-item"><span class="badge badge-system">System field</span> not shown to the referrer</div>
+      <div class="legend-item"><span class="badge badge-hidden">X% hidden</span> share of programs where that field is hidden, not shown to the referrer</div>
+      <div class="legend-item"><span class="badge badge-voice">Voice automation</span> auto-filled live on a Five9 call, before any manual typing</div>
+      <div class="legend-item"><span class="badge badge-exclude">Not recommended</span> too program-specific to template</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag"><span class="badge badge-core">Core</span></span>
+    <p class="eyebrow">Patient Personal Details</p>
+    <h1 class="form-title">CareLinx Referral Form</h1>
+    <p class="section-sub">Step 1 of 6 — who the care is for and how to reach them. Used, in some form, by all 126 programs.</p>
+
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">First Name</span></div>
+      <div class="field-input">First name of patient</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Last Name</span></div>
+      <div class="field-input">Last name of patient</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Date of Birth</span><span class="badge badge-module">48% of programs</span></div>
+      <div class="field-input">MM / DD / YYYY</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Gender</span><span class="badge badge-module">80% of programs</span></div>
+      <div class="field-input">Select gender</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Phone Number</span></div>
+      <div class="field-input">Best contact number</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Email Address</span></div>
+      <div class="field-input">name@example.com</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Care Location Address</span></div>
+      <div class="field-input">Type and select the care address</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Apt # (optional)</span></div>
+      <div class="field-input">Unit / apartment number</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Care for</span><span class="badge badge-hidden">73% hidden</span></div>
+      <div class="field-input">Myself / A family member / Someone else — in most live programs this is pre-set by the program, not chosen by the referrer</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag"><span class="badge badge-core">Core</span></span>
+    <p class="eyebrow">Care Needs</p>
+    <h1 class="form-title">CareLinx Referral Form</h1>
+    <p class="section-sub">Step 2 of 6 — what kind of help is needed and who should provide it.</p>
+
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Job Post Title</span><span class="badge badge-module">83% of programs</span><span class="badge badge-hidden">65% hidden</span></div>
+      <div class="field-input">Auto-generated — editable, but hidden from the referrer in nearly two-thirds of live programs</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Job Description</span><span class="badge badge-module">83% of programs</span><span class="badge badge-hidden">65% hidden</span></div>
+      <div class="field-input">Auto-generated — editable, but hidden from the referrer in nearly two-thirds of live programs</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">ADL Support Needed</span><span class="badge badge-module">60% of programs</span></div>
+      <div class="field-input">Bathing, dressing, mobility, meal prep…</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Relevant Medical History</span><span class="badge badge-module">83% of programs</span></div>
+      <div class="field-input">Conditions caregivers should know about</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Preferred Caregiver Gender</span><span class="badge badge-module">61% of programs</span></div>
+      <div class="field-input">No preference / Female / Male</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Preferred Caregiver Language(s)</span><span class="badge badge-module">59% of programs</span></div>
+      <div class="field-input">English, Spanish, Mandarin…</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Other Info for Caregiver Candidates</span><span class="badge badge-module">41% of programs</span></div>
+      <div class="field-input">Anything else candidates should know</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag"><span class="badge badge-core">Core</span></span>
+    <p class="eyebrow">Schedule &amp; Care Plan</p>
+    <h1 class="form-title">CareLinx Referral Form</h1>
+    <p class="section-sub">Step 3 of 6 — when care starts, how often, and who's paying. This is where "hidden in practice" shows up the most: most of these fields are populated behind the scenes rather than typed in by the referrer.</p>
+
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Start Date</span><span class="badge badge-module">83% of programs</span></div>
+      <div class="field-input">MM / DD / YYYY</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Available Schedule</span><span class="badge badge-module">58% of programs</span></div>
+      <div class="field-input">Days and times care is needed</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Hours per Week</span><span class="badge badge-module">84% of programs</span><span class="badge badge-hidden">55% hidden</span></div>
+      <div class="field-input">e.g. 20 — hidden from the referrer in just over half of live programs, usually because it's derived from the schedule instead</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Care Duration (Start — End)</span><span class="badge badge-module">75–78% of programs</span><span class="badge badge-hidden">99–100% hidden</span></div>
+      <div class="field-input">Estimated length of the care plan — almost never shown to the referrer; this is effectively a system/staff field everywhere except a handful of programs</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Housing</span><span class="badge badge-module">84% of programs</span><span class="badge badge-hidden">87% hidden</span></div>
+      <div class="field-input">Live-in / Live-out — hidden from the referrer in most live programs; typically set by the program itself</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Payment Source</span><span class="badge badge-module">83% of programs</span><span class="badge badge-hidden">82% hidden</span></div>
+      <div class="field-input">Self-pay / Health plan / Program-funded — hidden from the referrer in most live programs; usually fixed per program rather than selected</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag"><span class="badge badge-module">Optional module</span></span>
+    <p class="eyebrow">Health System / Referring Staff Info</p>
+    <h1 class="form-title">CareLinx Referral Form</h1>
+    <p class="section-sub">Step 4 of 6 — switch on for hospital, discharge-planner, and partner-staff referral sources.</p>
+
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Referring Staff Name</span></div>
+      <div class="field-input">First and last name of referring staff</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Referring Staff Phone / Email</span></div>
+      <div class="field-input">Contact info for the referring staff member</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Referring Location</span></div>
+      <div class="field-input">Hospital, SNF, clinic, or other discharge center</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Staff Enrolling Patient</span></div>
+      <div class="field-input">Advisor / staff name on file</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Internal Notes</span><span class="badge badge-system">Staff only</span></div>
+      <div class="field-input">Private — shared with CareLinx staff only</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag"><span class="badge badge-module">Optional module</span></span>
+    <p class="eyebrow">Eligibility &amp; Benefit Tracking</p>
+    <h1 class="form-title">CareLinx Referral Form</h1>
+    <p class="section-sub">Step 5 of 6 — switch on for health-plan / benefit-funded programs (used identically by all 12 UHC TERHM / Optum programs).</p>
+
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Member ID</span></div>
+      <div class="field-input">Health plan member or MRN</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Eligibility Evidence Type</span><span class="badge badge-hidden">100% hidden</span></div>
+      <div class="field-input">How eligibility was confirmed — never shown to the referrer in this dataset; confirmed by staff after submission</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Benefit Type</span></div>
+      <div class="field-input">HHA / Respite / Both</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Benefit Effective / Expiration Dates</span></div>
+      <div class="field-input">Per benefit type (HHA and Respite tracked separately)</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Referral / Authorization Number</span></div>
+      <div class="field-input">Per benefit type</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Approved Weekly Hours</span></div>
+      <div class="field-input">Per benefit type</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Bring Your Own Caregiver</span></div>
+      <div class="field-input">Yes / No</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag"><span class="badge badge-module">Optional module</span></span>
+    <p class="eyebrow">ADL Calculator</p>
+    <h1 class="form-title">CareLinx Referral Form</h1>
+    <p class="section-sub">Step 6 of 6 — switch on wherever a recommended-hours calculator feeds the care plan (UHC family, Providence PHP).</p>
+
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Recommended Hours</span></div>
+      <div class="field-input">Calculated from ADL responses</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Reference Number</span></div>
+      <div class="field-input">Calculator reference ID</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Recommended Days</span></div>
+      <div class="field-input">Calculated from ADL responses</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="card-tag"><span class="badge badge-voice">Voice automation</span></span>
+    <p class="eyebrow">Five9 Call — Live Voice Automation</p>
+    <h1 class="form-title">CareLinx Referral Form</h1>
+    <p class="section-sub">Optional module — for referrals taken over a Five9 contact-center call. Five9's voice AI transcribes the call in real time and maps what the caller says directly onto the matching fields below as the call happens, so the agent is confirming pre-filled answers instead of typing them from scratch.</p>
+
+    <div class="five9-banner">
+      <span class="five9-dot"></span>
+      <span class="five9-banner-text">Five9 call in progress — fields populating live from voice</span>
+    </div>
+
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">First Name</span><span class="badge badge-voice">Auto-filled from call</span></div>
+      <div class="field-input field-input-voice">"Maria" — captured from speech-to-text as the caller says it</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Last Name</span><span class="badge badge-voice">Auto-filled from call</span></div>
+      <div class="field-input field-input-voice">"Alvarez" — captured from speech-to-text</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Phone Number</span><span class="badge badge-voice">Auto-filled from call</span></div>
+      <div class="field-input field-input-voice">Caller ID / ANI from the Five9 call record — no typing needed</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Care for</span><span class="badge badge-voice">Auto-filled from call</span><span class="badge badge-hidden">73% hidden</span></div>
+      <div class="field-input field-input-voice">"It's for my mother" — intent-matched to Myself / A family member / Someone else</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">ADL Support Needed</span><span class="badge badge-voice">Auto-filled from call</span></div>
+      <div class="field-input field-input-voice">"She needs help bathing and getting dressed" — mapped to the matching ADL checkboxes</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Call Recording &amp; Transcript</span><span class="badge badge-system">Staff only</span></div>
+      <div class="field-input">Attached to the referral automatically once the call ends</div>
+    </div>
+
+    <div class="five9-foot">
+      <span><b>How it works:</b> Five9's IVR/agent-assist layer streams the call to a speech-to-text + intent-matching pipeline. Matched fields fill in live, with low-confidence matches left blank for the agent or referrer to confirm rather than guessed. Nothing here changes which fields exist above — it's a second way to fill the same fields, so hidden/system fields stay exactly as governed by each program's existing rules.</span>
+    </div>
+  </div>
+
+  <div class="exclude-box">
+    <h2>Deliberately left out of the base template</h2>
+    <p class="note">Fields used by only one program in the data set — real for that program, but they'd add clutter everywhere else. Keep these as true per-program custom fields instead of templating them. Re-checked against the fuller 126-program dataset — two entries from the original 62-program pass (a "Care Plan template selector" and "Preferred Contact Method") turned out to no longer be single-program fields once the bigger dataset was counted, so they've been removed from this list.</p>
+
+    <div class="exclude-row">
+      <span class="exclude-field">Pet screening (birds / cats / dogs / snakes)<span class="badge badge-exclude" style="margin-left:8px">1 program</span></span>
+      <span class="exclude-why">Discharged Support's clinical intake only</span>
+    </div>
+    <div class="exclude-row">
+      <span class="exclude-field">Dementia / wounds / lines &amp; tubes / post-surgery screening<span class="badge badge-exclude" style="margin-left:8px">1 program</span></span>
+      <span class="exclude-why">Discharged Support's clinical eligibility screen</span>
+    </div>
+    <div class="exclude-row">
+      <span class="exclude-field">Care Location Zip Code (standalone)<span class="badge badge-exclude" style="margin-left:8px">1 program</span></span>
+      <span class="exclude-why">VA EDF Caring for Caregiver — fold into the Address autocomplete field instead</span>
+    </div>
+  </div>
+
+  <div class="card" style="background:#FAFAF9">
+    <span class="card-tag"><span class="badge badge-system">System fields</span></span>
+    <p class="eyebrow">Account Setup</p>
+    <h1 class="form-title" style="color:#141413">CareLinx Referral Form</h1>
+    <p class="section-sub">Not shown to the person filling out the form — set automatically or by CareLinx staff.</p>
+
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Password</span><span class="badge badge-hidden">29% hidden</span></div>
+      <div class="field-input">Generated on account activation — flagged hidden in about a third of programs; shown read-only or masked in the rest</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Flow / Referral Source</span><span class="badge badge-hidden">98% hidden</span></div>
+      <div class="field-input">Set from the program's lead-source code — hidden from the referrer almost everywhere, as expected for a system field</div>
+    </div>
+    <div class="field">
+      <div class="field-label-row"><span class="field-label">Inactive</span><span class="badge badge-hidden">98% hidden</span></div>
+      <div class="field-input">Set by staff when a lead is closed out — hidden from the referrer almost everywhere, as expected for a system field</div>
+    </div>
+  </div>
+
+  <p class="footer-note">Adoption badges reflect field usage across the current dataset — 126 live programs, 4,137 field entries. Hidden-field badges reflect the share of those entries flagged <code>hidden = true</code> in the current implementation (i.e. not shown to the person filling out the form) — shown wherever that share is 15% or higher. See the Field Matrix workbook for exact program-by-program breakdowns.</p>
+
+</div>
+</body>
+</html>
